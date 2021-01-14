@@ -279,7 +279,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-c9d8fa83.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-189ce695.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-e033bdd3.js"></script>
 
@@ -296,7 +296,7 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo-1e815a84.png" class="logo" alt="" />
+      <img src="images/logo-1887b3d7.png" class="logo" alt="" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
         </div>
@@ -309,54 +309,58 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-          </li>
-          <li>
-            <a href="#appointments" class="toc-h1 toc-link" data-title="Appointments">Appointments</a>
-          </li>
-          <li>
-            <a href="#calls" class="toc-h1 toc-link" data-title="Calls">Calls</a>
-          </li>
-          <li>
-            <a href="#file-requests" class="toc-h1 toc-link" data-title="File Requests">File Requests</a>
-          </li>
-          <li>
-            <a href="#files" class="toc-h1 toc-link" data-title="Files">Files</a>
-          </li>
-          <li>
-            <a href="#messages" class="toc-h1 toc-link" data-title="Messages">Messages</a>
-          </li>
-          <li>
-            <a href="#notifications" class="toc-h1 toc-link" data-title="Notifications">Notifications</a>
-          </li>
-          <li>
-            <a href="#surgery-ingestor" class="toc-h1 toc-link" data-title="Surgery Ingestor">Surgery Ingestor</a>
-          </li>
-          <li>
-            <a href="#sms-verify" class="toc-h1 toc-link" data-title="SMS Verify">SMS Verify</a>
-          </li>
-          <li>
-            <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
-          </li>
-          <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting Started">Getting Started</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                    <a href="#constructing-requests" class="toc-h2 toc-link" data-title="Constructing Requests">Constructing Requests</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#status-codes" class="toc-h2 toc-link" data-title="Status Codes">Status Codes</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#file-requests" class="toc-h1 toc-link" data-title="File Requests">File Requests</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-a-file-request" class="toc-h2 toc-link" data-title="Create a File Request">Create a File Request</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-file-request" class="toc-h2 toc-link" data-title="Get a Specific File Request">Get a Specific File Request</a>
+                  </li>
+                  <li>
+                    <a href="#json-objects" class="toc-h2 toc-link" data-title="JSON Objects">JSON Objects</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#files" class="toc-h1 toc-link" data-title="Files">Files</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#upload-files" class="toc-h2 toc-link" data-title="Upload Files">Upload Files</a>
+                  </li>
+                  <li>
+                    <a href="#download-a-specific-file" class="toc-h2 toc-link" data-title="Download a Specific File">Download a Specific File</a>
+                  </li>
+                  <li>
+                    <a href="#json-objects" class="toc-h2 toc-link" data-title="JSON Objects">JSON Objects</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#events-amp-webhooks" class="toc-h1 toc-link" data-title="Events &amp; Webhooks">Events &amp; Webhooks</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#file-request-files-updated" class="toc-h2 toc-link" data-title="File Request Files Updated">File Request Files Updated</a>
+                  </li>
+              </ul>
           </li>
       </ul>
         <ul class="toc-footer">
+            <li><a href='https://platform.x-onweb.com'>X-on Platform API Docs</a></li>
             <li><a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
@@ -364,169 +368,580 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>The Surgery Connect Backend is a collection of cloud services that act as a communication channel between the Surgery Connect patient apps, and Surgery Connect staff apps.</p>
 
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>These APIs provides features for communicating and interacting with patients:</p>
 
-<p>This example API documentation page was created with <a href="https://github.com/slatedocs/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
+<ul>
+<li>Make a VoIP call to a patient (for patients using the Surgery Connect mobile app).</li>
+<li>Request one or more files from a patient, and be notified when they respond.</li>
+<li>Send a message with file attachments to a patient, optionally allowing them to respond in a 2-way text conversation.</li>
+<li>Upload files to share with a patient or staff member, and download them (or a custom sized thumbnail, in the case of image files).</li>
+<li>Create &amp; manage patient appointments, and be notified when patients self-schedule, cancel, or arrive for an appointment.</li>
+</ul>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+These backend services are still under review/development, and as such this documentation is subject to change.
 </aside>
-<h1 id='appointments'>Appointments</h1>
-<p>TBC</p>
-<h1 id='calls'>Calls</h1>
-<p>TBC</p>
-<h1 id='file-requests'>File Requests</h1>
-<p>TBC</p>
-<h1 id='files'>Files</h1>
-<p>TBC</p>
-<h1 id='messages'>Messages</h1>
-<p>TBC</p>
-<h1 id='notifications'>Notifications</h1>
-<p>TBC</p>
-<h1 id='surgery-ingestor'>Surgery Ingestor</h1>
-<p>TBC</p>
-<h1 id='sms-verify'>SMS Verify</h1>
-<p>TBC</p>
-<h1 id='webhooks'>Webhooks</h1>
-<p>TBC</p>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
+<h1 id='getting-started'>Getting Started</h1><h2 id='authentication'>Authentication</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer MyApiKey"</span>
 </code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Replace <code>MyApiKey</code> with your API key.</p>
+</blockquote>
+
+<p>You will be issued with an API key that is used to authenticate access to this API.</p>
+
+<p>Your API key must be provided in all requests to the API using the Authorization header.</p>
+
+<p><code>Authorization: Bearer MyApiKey</code></p>
+
+<aside class="notice">
+Replace <code>MyApiKey</code> with your API key.
+</aside>
+<h2 id='constructing-requests'>Constructing Requests</h2>
+<p>Unless otherwise specified, all request URIs should be appended to the following base URL:</p>
+
+<p><code>https://api.x-on.app</code></p>
+<h2 id='status-codes'>Status Codes</h2>
+<p>Each API may document specific status codes and provide a specific reason for returning that status code. This is a general overview of the status codes you may expect from an API and what they will mean to you.</p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>The request was successful. The response will contain a JSON body.</td>
+</tr>
+<tr>
+<td>400</td>
+<td>The request was invalid and/or malformed. The response will contain JSON describing the specific errors.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>You did not supply a valid Authorization header. The header was omitted or your API key was not valid. The response will be empty. See <a href="#authentication">Authentication</a>.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The object you requested doesn’t exist. The response will be empty.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>There was an internal error. The response will be empty. This is generally a server error condition. If possible, please open a GitHub Issue so we can help you resolve the issue.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>The requested action cannot be completed due the current rate of requests. Retry the request later.</td>
+</tr>
+</tbody></table>
+<h1 id='file-requests'>File Requests</h1><h2 id='create-a-file-request'>Create a File Request</h2>
+<blockquote>
+<p>Example request JSON:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"prompt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please take a close-up photo of the rash on the back of your right hand."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"photo"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accountUserId"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"staffName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dr Rachel Williams"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"patientMobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+447777123456"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"patientDateOfBirth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1980-06-17"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"patientFirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"patientLastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Example response JSON:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4d47426-c99a-43df-81ea-8304a62c5127"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:32:17.452104+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"files"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"patient_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9d6ad525-90c6-4c03-8f05-63584ee20a29"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"prompt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please take a close-up photo of the rash on the back of your right hand."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"short_link_expires_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"short_link_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a49ekq3j"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"staff_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c46c3407-9c79-498f-a713-07b7d8f1fabf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"staff_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dr Rachel Williams"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"photo"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Creates a new file request and notifies the patient.</p>
+
+<p>The patient is identified using their mobile number. If a patient app user already exists with that mobile number the file request is associated with them and they receive a notification to the app. If no patient already exists with that mobile number, a new &#39;shell&#39; user is created, and the patient receives an SMS with a link to respond to the file request in a web browser.</p>
+
+<p>The staff user is identified using their user ID in the patient database (if known), else using their X-on account user ID. If no staff user is found with the provided ID, a new &#39;shell&#39; user is created.</p>
+<h3 id='uri'>URI</h3>
+<p><code>POST /v1/file-requests</code></p>
+<h3 id='request-body'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>prompt</code></td>
+<td>Yes</td>
+<td>String</td>
+<td>A textual prompt to show to the patient, directing them to upload a particular file.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>Yes</td>
+<td>String</td>
+<td>Determines what file type/size restrictions should be used when validating user-selected files. The only option at the moment is &quot;photo&quot;.</td>
+</tr>
+<tr>
+<td><code>staffId</code></td>
+<td>No</td>
+<td>String</td>
+<td>The UUID of the staff user in the patient database (where known).</td>
+</tr>
+<tr>
+<td><code>accountUserId</code></td>
+<td>Yes, if <code>staffId</code> is not specified; otherwise no.</td>
+<td>String</td>
+<td>The ID of the X-on account user sending the message.</td>
+</tr>
+<tr>
+<td><code>accountId</code></td>
+<td>Yes</td>
+<td>String</td>
+<td>The ID of the X-on account sending the message. Used to associate a file request with a particular account, so that any SMS notifications are sent using that account&#39;s SMS gateway.</td>
+</tr>
+<tr>
+<td><code>staffName</code></td>
+<td>Yes</td>
+<td>String</td>
+<td>The name of the staff member requesting a file, shown to the patient.</td>
+</tr>
+<tr>
+<td><code>patientMobile</code></td>
+<td>Yes</td>
+<td>String</td>
+<td>Mobile number of the patient in E.164 format.</td>
+</tr>
+<tr>
+<td><code>patientDateOfBirth</code></td>
+<td>Yes</td>
+<td>String</td>
+<td>Patient date of birth in ISO 8601 date format. Used to allow patient to verify their identity to respond to a file request.</td>
+</tr>
+<tr>
+<td><code>patientFirstName</code></td>
+<td>No</td>
+<td>String</td>
+<td>The patient&#39;s first name.</td>
+</tr>
+<tr>
+<td><code>patientLastName</code></td>
+<td>No</td>
+<td>String</td>
+<td>The patient&#39;s last name.</td>
+</tr>
+</tbody></table>
+<h3 id='response-body'>Response Body</h3>
+<p>Contains a <a href="#filerequest">FileRequest</a> JSON Object.</p>
+<h2 id='get-a-specific-file-request'>Get a Specific File Request</h2>
+<blockquote>
+<p>Example response JSON:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4d47426-c99a-43df-81ea-8304a62c5127"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:32:17.452104+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7fecfb58-bfd6-462e-9e6e-f9ede76c7c95"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mime_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"original_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0292.JPG"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2904221</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"196dccdb-079a-4bbd-a082-bb03cc8efe47"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"file_request_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4d47426-c99a-43df-81ea-8304a62c5127"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mime_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"original_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0293.JPG"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2738706</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"patient_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9d6ad525-90c6-4c03-8f05-63584ee20a29"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"prompt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please take a close-up photo of the rash on the back of your right hand."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"short_link_expires_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"short_link_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a49ekq3j"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"staff_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c46c3407-9c79-498f-a713-07b7d8f1fabf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"staff_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dr Rachel Williams"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"photo"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Fetches an existing file request.</p>
+
+<p>If the patient has responded to the file request, the response will include one or more files.</p>
+<h3 id='uri-2'>URI</h3>
+<p><code>GET /v1/file-requests/{fileRequestId}</code></p>
+<h3 id='request-parameters'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fileRequestId</code></td>
+<td>Yes</td>
+<td>String</td>
+<td>The UUID of the file request to fetch.</td>
+</tr>
+</tbody></table>
+<h3 id='response-body-2'>Response Body</h3>
+<p>Contains a <a href="#filerequest">FileRequest</a> JSON Object.</p>
+<h2 id='json-objects'>JSON Objects</h2><h3 id='filerequest'>FileRequest</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>The UUID of the created file request.</td>
+</tr>
+<tr>
+<td><code>account_id</code></td>
+<td>String</td>
+<td>The ID of the X-on account sending the message.</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>String</td>
+<td>The file request creation date in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>files</code></td>
+<td>Array</td>
+<td>The list of files sent in response to this file request. Initially empty.</td>
+</tr>
+<tr>
+<td><code>files[x].id</code></td>
+<td>String</td>
+<td>The UUID of the file.</td>
+</tr>
+<tr>
+<td><code>files[x].created_at</code></td>
+<td>String</td>
+<td>The timestamp when this file was created (uploaded) in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>files[x].expires_at</code></td>
+<td>String</td>
+<td>The timestamp when access to this file will expire in ISO 8601 format. After this time, the file will remain in file storage, but will be inaccessible to all APIs.</td>
+</tr>
+<tr>
+<td><code>files[x].mime_type</code></td>
+<td>String</td>
+<td>The MIME type of the file.</td>
+</tr>
+<tr>
+<td><code>files[x].original_name</code></td>
+<td>String</td>
+<td>The original name of the file when uploaded.</td>
+</tr>
+<tr>
+<td><code>files[x].size</code></td>
+<td>Integer</td>
+<td>The size of the file in bytes.</td>
+</tr>
+<tr>
+<td><code>patient_id</code></td>
+<td>String</td>
+<td>The UUID of the patient user the file request was sent to.</td>
+</tr>
+<tr>
+<td><code>prompt</code></td>
+<td>String</td>
+<td>A textual prompt to show to the patient, directing them to upload a particular file.</td>
+</tr>
+<tr>
+<td><code>short_link_expires_at</code></td>
+<td>String</td>
+<td>The timestamp when access to this file request via the short link URL will expire. After this time, the patient will be unable to respond to this file request.</td>
+</tr>
+<tr>
+<td><code>short_link_id</code></td>
+<td>String</td>
+<td>An ID that can be used to form a public URL to the file request. This allows an unauthenticated user to access a webpage through which they can view/respond to the file request.</td>
+</tr>
+<tr>
+<td><code>staff_id</code></td>
+<td>String</td>
+<td>The UUID of the staff user the file request was sent from.</td>
+</tr>
+<tr>
+<td><code>staff_name</code></td>
+<td>String</td>
+<td>The name of the staff member requesting a file, shown to the patient.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>Determines what file type/size restrictions should be used when validating user-selected files.</td>
+</tr>
+</tbody></table>
+<h1 id='files'>Files</h1><h2 id='upload-files'>Upload Files</h2>
+<blockquote>
+<p>Example request JSON:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="err">TBC</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Example response JSON:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+  </span><span class="p">{</span><span class="w"> 
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7fecfb58-bfd6-462e-9e6e-f9ede76c7c95"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"file_request_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4d47426-c99a-43df-81ea-8304a62c5127"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mime_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"original_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0292.JPG"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2904221</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"196dccdb-079a-4bbd-a082-bb03cc8efe47"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"file_request_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4d47426-c99a-43df-81ea-8304a62c5127"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mime_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"original_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0293.JPG"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2738706</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<p>Uploads one or more files, optionally associating them with a specific file request.</p>
+
+<p>If an associated file request is specified, a <code>file-request.files.update</code> event is published to registered webhooks.</p>
+<h3 id='uri'>URI</h3>
+<p><code>POST /v1/files</code></p>
+<h3 id='request-body'>Request Body</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
+<th>Required</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td><code>files</code></td>
+<td>Yes</td>
+<td>TBC</td>
+<td></td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td><code>expiryInterval</code></td>
+<td>No</td>
+<td>Integer</td>
+<td>The time interval (in seconds) after which the file will expire and subsequently be removed from storage. If you don&#39;t specify a value, the file will not expire automatically.</td>
+</tr>
+<tr>
+<td><code>userId</code></td>
+<td>Yes</td>
+<td>String</td>
+<td>The UUID of the user uploading the file.</td>
+</tr>
+<tr>
+<td><code>fileRequestId</code></td>
+<td>No</td>
+<td>String</td>
+<td>The UUID of a file request to associate the files with (i.e. as a response to the file request). If <code>null</code>, the files will be uploaded without assocating them with an existing file request.</td>
 </tr>
 </tbody></table>
+<h3 id='response-body'>Response Body</h3>
+<p>Contains a <a href="#file">File</a> JSON Object.</p>
+<h2 id='download-a-specific-file'>Download a Specific File</h2>
+<p>Downloads an existing file as a stream of data.</p>
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+<p>Optionally specify image dimensions to download a thumbnail of the file (only works with image files, obviously!).</p>
+<h3 id='uri-2'>URI</h3>
+<p><code>GET /v1/files/{fileId}?imageSize=200x140</code></p>
+<h3 id='request-parameters'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fileId</code></td>
+<td>Yes</td>
+<td>String</td>
+<td>The UUID of the file to download.</td>
+</tr>
+<tr>
+<td><code>imageSize</code></td>
+<td>No</td>
+<td>String</td>
+<td>The desired dimensions of the downloaded image, e.g. <code>200x140</code>. Use to obtain a thumbnail of the image without having to download the full image. Omit this parameter to download the image at its original size.<br><br>Since you cannot know the original image dimensions ahead of time and the server does not perform cropping, the returned image dimensions are not guaranteed to be exactly those specified in this parameter. The image is resized using aspect fill scaling, so that neither the width nor height of the returned image is smaller than the requested dimensions.<br><br>If the specified file is not an image, this parameter is ignored.</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<p>A file stream for downloading the specified file data.</p>
+<h2 id='json-objects'>JSON Objects</h2><h3 id='file'>File</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>The UUID of the file.</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>String</td>
+<td>The timestamp when this file was created (uploaded) in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>expires_at</code></td>
+<td>String</td>
+<td>The timestamp when access to this file will expire in ISO 8601 format. After this time, the file will remain in file storage, but will be inaccessible to all APIs.</td>
+</tr>
+<tr>
+<td><code>file_request_id</code></td>
+<td>String</td>
+<td>The UUID of the file request this file is associated with, or <code>null</code> if not associated with any file request.</td>
+</tr>
+<tr>
+<td><code>mime_type</code></td>
+<td>String</td>
+<td>The MIME type of the file.</td>
+</tr>
+<tr>
+<td><code>original_name</code></td>
+<td>String</td>
+<td>The original name of the file when uploaded.</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>Integer</td>
+<td>The size of the file in bytes.</td>
+</tr>
+</tbody></table>
+<h1 id='events-amp-webhooks'>Events &amp; Webhooks</h1>
+<p>Some of the services that make up this API need to notify interested consumers of events so they can respond accordingly (e.g. notifying a staff member when a patient responds to their file request). Events and webhooks provide a publish-subscribe pattern to accommodate this requirement.</p>
+
+<p>Events are sent via an HTTP <code>POST</code> request with a JSON request body. The request will be sent with the a <code>Content-Type</code> header of <code>application/json</code>. A webhook should process an event and respond with a status code between <code>200</code> and <code>299</code> (inclusive).</p>
+
+<aside class="notice">
+While we might offer the ability to dynamically configure webhooks in the future, for now all events are hardcoded to be sent to the following X-on Platform API webhook:<br>
+<code>https://sc-api.x-onweb.com/api/v2/patient-notifications</code>
 </aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+<h2 id='file-request-files-updated'>File Request Files Updated</h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2e0db25d-8b39-40fa-81fc-cab625fa130f"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:30.929534+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file-request.files.update"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fileRequest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4d47426-c99a-43df-81ea-8304a62c5127"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:32:17.452104+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7fecfb58-bfd6-462e-9e6e-f9ede76c7c95"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"mime_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"original_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0292.JPG"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2904221</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"196dccdb-079a-4bbd-a082-bb03cc8efe47"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"file_request_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4d47426-c99a-43df-81ea-8304a62c5127"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"mime_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"original_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0293.JPG"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2738706</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"patient_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9d6ad525-90c6-4c03-8f05-63584ee20a29"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"prompt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please take a close-up photo of the rash on the back of your right hand."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"short_link_expires_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"short_link_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a49ekq3j"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"staff_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c46c3407-9c79-498f-a713-07b7d8f1fabf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"staff_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dr Rachel Williams"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"photo"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"addedFileIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"7fecfb58-bfd6-462e-9e6e-f9ede76c7c95"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"196dccdb-079a-4bbd-a082-bb03cc8efe47"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"removedFileIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves a specific kitten.</p>
+<p>This event is generated whenever the files associated with a particular file request are added or removed, for example, when a patient responds to a file request by uploading one or more files.</p>
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<p>The JSON includes the FileRequest whose files changed, and arrays of IDs for the files that were added and removed.</p>
+<h3 id='event-body'>Event Body</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td><code>event.id</code></td>
+<td>String</td>
+<td>The UUID of the event. This may be used to identify &amp; protect against duplicate events.</td>
+</tr>
+<tr>
+<td><code>event.createdAt</code></td>
+<td>String</td>
+<td>The timestamp when the event was created in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>event.type</code></td>
+<td>String</td>
+<td>The event type. This value will always be <code>file-request.files.update</code>.</td>
+</tr>
+<tr>
+<td><code>event.fileRequest</code></td>
+<td>Object</td>
+<td>The file request whose files changed, as a <a href="#filerequest">FileRequest</a> JSON Object.</td>
+</tr>
+<tr>
+<td><code>event.addedFileIds</code></td>
+<td>Array</td>
+<td>An array of UUIDs (Strings) of the files that were added to the file request.</td>
+</tr>
+<tr>
+<td><code>event.removedFileIds</code></td>
+<td>Array</td>
+<td>An array of UUIDs (Strings) of the files that were removed from the file request.</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
-  <span class="nt">-X</span> DELETE <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
-</tr>
-</tbody></table>
-<h1 id='errors'>Errors</h1>
-<p>The following error codes are used:</p>
-
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-</tbody></table>
-
-<p>TBC...</p>
 
       </div>
       <div class="dark-box">
