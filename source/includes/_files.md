@@ -15,20 +15,20 @@ TBC
 [
   { 
     "id": "7fecfb58-bfd6-462e-9e6e-f9ede76c7c95",
-    "created_at": "2021-01-15T14:33:29.145322+00:00",
-    "expires_at": "2021-01-15T15:33:29.145322+00:00",
-    "file_request_id": "f4d47426-c99a-43df-81ea-8304a62c5127",
-    "mime_type": "image/jpeg",
-    "original_name": "IMG_0292.JPG",
+    "createdAt": "2021-01-15T14:33:29.145322+00:00",
+    "expiresAt": "2021-01-15T15:33:29.145322+00:00",
+    "fileRequestId": "f4d47426-c99a-43df-81ea-8304a62c5127",
+    "mimeType": "image/jpeg",
+    "originalName": "IMG_0292.JPG",
     "size": 2904221
   },
   {
     "id": "196dccdb-079a-4bbd-a082-bb03cc8efe47",
-    "created_at": "2021-01-15T14:33:29.145322+00:00",
-    "expires_at": "2021-01-15T15:33:29.145322+00:00",
-    "file_request_id": "f4d47426-c99a-43df-81ea-8304a62c5127",
-    "mime_type": "image/jpeg",
-    "original_name": "IMG_0293.JPG",
+    "createdAt": "2021-01-15T14:33:29.145322+00:00",
+    "expiresAt": "2021-01-15T15:33:29.145322+00:00",
+    "fileRequestId": "f4d47426-c99a-43df-81ea-8304a62c5127",
+    "mimeType": "image/jpeg",
+    "originalName": "IMG_0293.JPG",
     "size": 2738706
   }
 ]
@@ -84,9 +84,9 @@ A file stream for downloading the specified file data.
 Field | Type | Description
 ----- | ---- | -----------
 `id` | String | The UUID of the file.
-`created_at` | String | The timestamp when this file was created (uploaded) in ISO 8601 format.
-`expires_at` | String | The timestamp when access to this file will expire in ISO 8601 format. After this time, the file will remain in file storage, but will be inaccessible to all APIs.
-`file_request_id` | String | The UUID of the file request this file is associated with, or `null` if not associated with any file request.
-`mime_type` | String | The MIME type of the file.
-`original_name` | String | The original name of the file when uploaded.
+`createdAt` | String | The timestamp when this file was created (uploaded) in ISO 8601 format.
+`expiresAt` | String | The timestamp when access to this file will expire in ISO 8601 format. After this time, the file will remain in file storage, but will be inaccessible to all APIs.
+`fileRequestId` | String | The UUID of the file request this file is associated with, or `null` if not associated with any file request.
+`mimeType` | String | The MIME type of the file.
+`originalName` | String | The original name of the file when uploaded.
 `size` | Integer | The size of the file in bytes.

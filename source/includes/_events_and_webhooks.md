@@ -19,33 +19,32 @@ While we might offer the ability to dynamically configure webhooks in the future
     "type": "file-request.files.update",
     "fileRequest": {
       "id": "f4d47426-c99a-43df-81ea-8304a62c5127",
-      "account_id": "12",
-      "created_at": "2021-01-15T14:32:17.452104+00:00",
+      "accountId": "12",
+      "createdAt": "2021-01-15T14:32:17.452104+00:00",
       "files": [
         {
           "id": "7fecfb58-bfd6-462e-9e6e-f9ede76c7c95",
-          "created_at": "2021-01-15T14:33:29.145322+00:00",
-          "expires_at": "2021-01-15T15:33:29.145322+00:00",
-          "mime_type": "image/jpeg",
-          "original_name": "IMG_0292.JPG",
+          "createdAt": "2021-01-15T14:33:29.145322+00:00",
+          "expiresAt": "2021-01-15T15:33:29.145322+00:00",
+          "mimeType": "image/jpeg",
+          "originalName": "IMG_0292.JPG",
           "size": 2904221
         },
         {
           "id": "196dccdb-079a-4bbd-a082-bb03cc8efe47",
-          "created_at": "2021-01-15T14:33:29.145322+00:00",
-          "expires_at": "2021-01-15T15:33:29.145322+00:00",
-          "file_request_id": "f4d47426-c99a-43df-81ea-8304a62c5127",
-          "mime_type": "image/jpeg",
-          "original_name": "IMG_0293.JPG",
+          "createdAt": "2021-01-15T14:33:29.145322+00:00",
+          "expiresAt": "2021-01-15T15:33:29.145322+00:00",
+          "mimeType": "image/jpeg",
+          "originalName": "IMG_0293.JPG",
           "size": 2738706
         }
       ],
-      "patient_id": "9d6ad525-90c6-4c03-8f05-63584ee20a29",
+      "patientId": "9d6ad525-90c6-4c03-8f05-63584ee20a29",
       "prompt": "Please take a close-up photo of the rash on the back of your right hand.",
-      "short_link_expires_at": null,
-      "short_link_id": "a49ekq3j",
-      "staff_id": "c46c3407-9c79-498f-a713-07b7d8f1fabf",
-      "staff_name": "Dr Rachel Williams",
+      "shortLinkExpiresAt": null,
+      "shortLinkId": "a49ekq3j",
+      "staffId": "c46c3407-9c79-498f-a713-07b7d8f1fabf",
+      "staffName": "Dr Rachel Williams",
       "type": "photo"
     },
     "addedFileIds": [
