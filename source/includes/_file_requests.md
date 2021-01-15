@@ -9,8 +9,8 @@
 {
   "prompt": "Please take a close-up photo of the rash on the back of your right hand.",
   "type": "photo",
-  "accountUserId": 42,
-  "accountId": 12,
+  "accountUserId": "42",
+  "accountId": "12",
   "staffName": "Dr Rachel Williams",
   "patientMobile": "+447777123456",
   "patientDateOfBirth": "1980-06-17",
