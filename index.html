@@ -458,15 +458,15 @@ Replace <code>MyApiKey</code> with your API key.
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4d47426-c99a-43df-81ea-8304a62c5127"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:32:17.452104+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:32:17.452104+00:00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"files"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-  </span><span class="nl">"patient_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9d6ad525-90c6-4c03-8f05-63584ee20a29"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"patientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9d6ad525-90c6-4c03-8f05-63584ee20a29"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"prompt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please take a close-up photo of the rash on the back of your right hand."</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"short_link_expires_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"short_link_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a49ekq3j"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"staff_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c46c3407-9c79-498f-a713-07b7d8f1fabf"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"staff_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dr Rachel Williams"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"shortLinkExpiresAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"shortLinkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a49ekq3j"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"staffId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c46c3407-9c79-498f-a713-07b7d8f1fabf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"staffName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dr Rachel Williams"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"photo"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -555,33 +555,32 @@ Replace <code>MyApiKey</code> with your API key.
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4d47426-c99a-43df-81ea-8304a62c5127"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:32:17.452104+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:32:17.452104+00:00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7fecfb58-bfd6-462e-9e6e-f9ede76c7c95"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"mime_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"original_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0292.JPG"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"expiresAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"originalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0292.JPG"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2904221</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"196dccdb-079a-4bbd-a082-bb03cc8efe47"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"file_request_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4d47426-c99a-43df-81ea-8304a62c5127"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"mime_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"original_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0293.JPG"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"expiresAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"originalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0293.JPG"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2738706</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"patient_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9d6ad525-90c6-4c03-8f05-63584ee20a29"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"patientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9d6ad525-90c6-4c03-8f05-63584ee20a29"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"prompt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please take a close-up photo of the rash on the back of your right hand."</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"short_link_expires_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"short_link_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a49ekq3j"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"staff_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c46c3407-9c79-498f-a713-07b7d8f1fabf"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"staff_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dr Rachel Williams"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"shortLinkExpiresAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"shortLinkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a49ekq3j"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"staffId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c46c3407-9c79-498f-a713-07b7d8f1fabf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"staffName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dr Rachel Williams"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"photo"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -622,12 +621,12 @@ Replace <code>MyApiKey</code> with your API key.
 <td>The UUID of the created file request.</td>
 </tr>
 <tr>
-<td><code>account_id</code></td>
+<td><code>accountId</code></td>
 <td>String</td>
 <td>The ID of the X-on account sending the message.</td>
 </tr>
 <tr>
-<td><code>created_at</code></td>
+<td><code>createdAt</code></td>
 <td>String</td>
 <td>The file request creation date in ISO 8601 format.</td>
 </tr>
@@ -642,22 +641,22 @@ Replace <code>MyApiKey</code> with your API key.
 <td>The UUID of the file.</td>
 </tr>
 <tr>
-<td><code>files[x].created_at</code></td>
+<td><code>files[x].createdAt</code></td>
 <td>String</td>
 <td>The timestamp when this file was created (uploaded) in ISO 8601 format.</td>
 </tr>
 <tr>
-<td><code>files[x].expires_at</code></td>
+<td><code>files[x].expiresAt</code></td>
 <td>String</td>
 <td>The timestamp when access to this file will expire in ISO 8601 format. After this time, the file will remain in file storage, but will be inaccessible to all APIs.</td>
 </tr>
 <tr>
-<td><code>files[x].mime_type</code></td>
+<td><code>files[x].mimeType</code></td>
 <td>String</td>
 <td>The MIME type of the file.</td>
 </tr>
 <tr>
-<td><code>files[x].original_name</code></td>
+<td><code>files[x].originalName</code></td>
 <td>String</td>
 <td>The original name of the file when uploaded.</td>
 </tr>
@@ -667,7 +666,7 @@ Replace <code>MyApiKey</code> with your API key.
 <td>The size of the file in bytes.</td>
 </tr>
 <tr>
-<td><code>patient_id</code></td>
+<td><code>patientId</code></td>
 <td>String</td>
 <td>The UUID of the patient user the file request was sent to.</td>
 </tr>
@@ -677,22 +676,22 @@ Replace <code>MyApiKey</code> with your API key.
 <td>A textual prompt to show to the patient, directing them to upload a particular file.</td>
 </tr>
 <tr>
-<td><code>short_link_expires_at</code></td>
+<td><code>shortLinkExpiresAt</code></td>
 <td>String</td>
 <td>The timestamp when access to this file request via the short link URL will expire. After this time, the patient will be unable to respond to this file request.</td>
 </tr>
 <tr>
-<td><code>short_link_id</code></td>
+<td><code>shortLinkId</code></td>
 <td>String</td>
 <td>An ID that can be used to form a public URL to the file request. This allows an unauthenticated user to access a webpage through which they can view/respond to the file request.</td>
 </tr>
 <tr>
-<td><code>staff_id</code></td>
+<td><code>staffId</code></td>
 <td>String</td>
 <td>The UUID of the staff user the file request was sent from.</td>
 </tr>
 <tr>
-<td><code>staff_name</code></td>
+<td><code>staffName</code></td>
 <td>String</td>
 <td>The name of the staff member requesting a file, shown to the patient.</td>
 </tr>
@@ -714,20 +713,20 @@ Replace <code>MyApiKey</code> with your API key.
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w"> 
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7fecfb58-bfd6-462e-9e6e-f9ede76c7c95"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"file_request_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4d47426-c99a-43df-81ea-8304a62c5127"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"mime_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"original_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0292.JPG"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expiresAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fileRequestId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4d47426-c99a-43df-81ea-8304a62c5127"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"originalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0292.JPG"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2904221</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"196dccdb-079a-4bbd-a082-bb03cc8efe47"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"file_request_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4d47426-c99a-43df-81ea-8304a62c5127"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"mime_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"original_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0293.JPG"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expiresAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fileRequestId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4d47426-c99a-43df-81ea-8304a62c5127"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"originalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0293.JPG"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2738706</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
@@ -817,27 +816,27 @@ Replace <code>MyApiKey</code> with your API key.
 <td>The UUID of the file.</td>
 </tr>
 <tr>
-<td><code>created_at</code></td>
+<td><code>createdAt</code></td>
 <td>String</td>
 <td>The timestamp when this file was created (uploaded) in ISO 8601 format.</td>
 </tr>
 <tr>
-<td><code>expires_at</code></td>
+<td><code>expiresAt</code></td>
 <td>String</td>
 <td>The timestamp when access to this file will expire in ISO 8601 format. After this time, the file will remain in file storage, but will be inaccessible to all APIs.</td>
 </tr>
 <tr>
-<td><code>file_request_id</code></td>
+<td><code>fileRequestId</code></td>
 <td>String</td>
 <td>The UUID of the file request this file is associated with, or <code>null</code> if not associated with any file request.</td>
 </tr>
 <tr>
-<td><code>mime_type</code></td>
+<td><code>mimeType</code></td>
 <td>String</td>
 <td>The MIME type of the file.</td>
 </tr>
 <tr>
-<td><code>original_name</code></td>
+<td><code>originalName</code></td>
 <td>String</td>
 <td>The original name of the file when uploaded.</td>
 </tr>
@@ -863,33 +862,32 @@ While we might offer the ability to dynamically configure webhooks in the future
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file-request.files.update"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"fileRequest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4d47426-c99a-43df-81ea-8304a62c5127"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:32:17.452104+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:32:17.452104+00:00"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7fecfb58-bfd6-462e-9e6e-f9ede76c7c95"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"mime_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"original_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0292.JPG"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"expiresAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"originalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0292.JPG"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2904221</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"196dccdb-079a-4bbd-a082-bb03cc8efe47"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"file_request_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4d47426-c99a-43df-81ea-8304a62c5127"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"mime_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"original_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0293.JPG"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"expiresAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"originalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0293.JPG"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2738706</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"patient_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9d6ad525-90c6-4c03-8f05-63584ee20a29"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"patientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9d6ad525-90c6-4c03-8f05-63584ee20a29"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"prompt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please take a close-up photo of the rash on the back of your right hand."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"short_link_expires_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"short_link_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a49ekq3j"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"staff_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c46c3407-9c79-498f-a713-07b7d8f1fabf"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"staff_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dr Rachel Williams"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"shortLinkExpiresAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"shortLinkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a49ekq3j"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"staffId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c46c3407-9c79-498f-a713-07b7d8f1fabf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"staffName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dr Rachel Williams"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"photo"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"addedFileIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
