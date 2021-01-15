@@ -51,7 +51,7 @@ The staff user is identified using their user ID in the patient database (if kno
 
 Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------
-`prompt` | Yes | String | A textual prompt to show to the patient, directing them to upload a particular file.
+`prompt` | No | String | A textual prompt to show to the patient, directing them to upload a particular file.
 `type` | Yes | String | Determines what file type/size restrictions should be used when validating user-selected files. The only option at the moment is "photo".
 `staffId` | No | String | The UUID of the staff user in the patient database (where known).
 `accountUserId` | Yes, if `staffId` is not specified; otherwise no. | String | The ID of the X-on account user sending the message.
