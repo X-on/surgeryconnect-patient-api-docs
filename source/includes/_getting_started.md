@@ -4,7 +4,7 @@
 ## Authentication
 
 ```shell
-curl "api_endpoint_here" \
+curl "api-endpoint-here" \
   -H "Authorization: Bearer MyApiKey"
 ```
 
