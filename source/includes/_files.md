@@ -6,7 +6,23 @@
 > Example request JSON:
 
 ```json
-TBC
+{
+  "files": [
+    {
+      "name": "IMG_0292.JPG",
+      "type": "image/jpeg",
+      "contents": "..."
+    },
+    {
+      "name": "IMG_0293.JPG",
+      "type": "image/jpeg",
+      "contents": "..."
+    }
+  ],
+  "expiryInterval": 3600,
+  "fileRequestId": "f4d47426-c99a-43df-81ea-8304a62c5127",
+  "userId": "9d6ad525-90c6-4c03-8f05-63584ee20a29"
+}
 ```
 
 > Example response JSON:
@@ -36,7 +52,7 @@ TBC
 
 Uploads one or more files, optionally associating them with a specific file request.
 
-If an associated file request is specified, a `file-request.files.update` event is published to registered webhooks.
+If an associated file request is specified, a [`file-request.files.update`](#file-request-files-updated) event is published to registered webhooks.
 
 ### URI
 
@@ -46,7 +62,10 @@ If an associated file request is specified, a `file-request.files.update` event 
 
 Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------
-`files` | Yes | TBC | 
+`files` | Yes | Array | An array of JSON objects representing files to be uploaded.
+`files[x].name` | Yes | String | The original name of the file.
+`files[x].type` | Yes | String | The MIME type of the file, e.g. "image/jpeg".
+`files[x].contents` | Yes | String | The Base64 encoded contents of the file.
 `expiryInterval` | No | Integer | The time interval (in seconds) after which the file will expire and subsequently be removed from storage. If you don't specify a value, the file will not expire automatically.
 `userId` | Yes | String | The UUID of the user uploading the file.
 `fileRequestId` | No | String | The UUID of a file request to associate the files with (i.e. as a response to the file request). If `null`, the files will be uploaded without assocating them with an existing file request.
