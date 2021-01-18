@@ -33,9 +33,10 @@ Each API may document specific status codes and provide a specific reason for re
 
 Code | Description
 ---- | -----------
-200 | The request was successful. The response will contain a JSON body.
-400 | The request was invalid and/or malformed. The response will contain JSON describing the specific errors.
-401 | You did not supply a valid Authorization header. The header was omitted or your API key was not valid. The response will be empty. See [Authentication](#authentication).
-404 | The object you requested doesn’t exist. The response will be empty.
+200 OK | The request was successful. The response will contain a JSON body.
+400 Bad Request | The request was invalid and/or malformed. The response will contain JSON describing the specific errors.
+401 Unauthorized | You did not supply a valid Authorization header. The header was omitted or your API key was not valid. The response will be empty. See [Authentication](#authentication).
+404 Not Found | The object you requested doesn’t exist. The response will be empty. Retry the request 
+429 Too Many Attempts | Too many requests have been made within a short time period. Retry the request after the number of seconds indicated in the `Retry-After` header. 
 500 | There was an internal error. The response will be empty. This is generally a server error condition. If possible, please open a GitHub Issue so we can help you resolve the issue.
-503 | The requested action cannot be completed due the current rate of requests. Retry the request later.
+503 Service Unavailable | The requested action cannot be completed right now due server load or maintenance. Retry the request later, or after the number of seconds indicated in the `Retry-After` header.
