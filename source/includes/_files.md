@@ -77,9 +77,9 @@ Contains a [File](#file) JSON Object.
 
 ## Download a Specific File
 
-Downloads an existing file as a stream of data.
+Downloads an existing file as a stream of data. Optionally specify image dimensions to download a thumbnail of the file (only works with image files, obviously!).
 
-Optionally specify image dimensions to download a thumbnail of the file (only works with image files, obviously!).
+For patient privacy, files stored in the cloud are not accessible using a publicly accessible URL. Access to files is only possible using this endpoint.
 
 ### URI
 
