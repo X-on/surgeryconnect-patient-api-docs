@@ -413,28 +413,32 @@ Replace <code>MyApiKey</code> with your API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>200</td>
+<td>200 OK</td>
 <td>The request was successful. The response will contain a JSON body.</td>
 </tr>
 <tr>
-<td>400</td>
+<td>400 Bad Request</td>
 <td>The request was invalid and/or malformed. The response will contain JSON describing the specific errors.</td>
 </tr>
 <tr>
-<td>401</td>
+<td>401 Unauthorized</td>
 <td>You did not supply a valid Authorization header. The header was omitted or your API key was not valid. The response will be empty. See <a href="#authentication">Authentication</a>.</td>
 </tr>
 <tr>
-<td>404</td>
-<td>The object you requested doesn’t exist. The response will be empty.</td>
+<td>404 Not Found</td>
+<td>The object you requested doesn’t exist. The response will be empty. Retry the request</td>
+</tr>
+<tr>
+<td>429 Too Many Attempts</td>
+<td>Too many requests have been made within a short time period. Retry the request after the number of seconds indicated in the <code>Retry-After</code> header.</td>
 </tr>
 <tr>
 <td>500</td>
 <td>There was an internal error. The response will be empty. This is generally a server error condition. If possible, please open a GitHub Issue so we can help you resolve the issue.</td>
 </tr>
 <tr>
-<td>503</td>
-<td>The requested action cannot be completed due the current rate of requests. Retry the request later.</td>
+<td>503 Service Unavailable</td>
+<td>The requested action cannot be completed right now due server load or maintenance. Retry the request later, or after the number of seconds indicated in the <code>Retry-After</code> header.</td>
 </tr>
 </tbody></table>
 <h1 id='file-requests'>File Requests</h1><h2 id='create-a-file-request'>Create a File Request</h2>
