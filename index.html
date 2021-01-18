@@ -705,7 +705,23 @@ Replace <code>MyApiKey</code> with your API key.
 <blockquote>
 <p>Example request JSON:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="err">TBC</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0292.JPG"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"contents"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0293.JPG"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"contents"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"expiryInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">3600</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"fileRequestId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4d47426-c99a-43df-81ea-8304a62c5127"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9d6ad525-90c6-4c03-8f05-63584ee20a29"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
 <p>Example response JSON:</p>
@@ -733,7 +749,7 @@ Replace <code>MyApiKey</code> with your API key.
 </span></code></pre></div>
 <p>Uploads one or more files, optionally associating them with a specific file request.</p>
 
-<p>If an associated file request is specified, a <code>file-request.files.update</code> event is published to registered webhooks.</p>
+<p>If an associated file request is specified, a <a href="#file-request-files-updated"><code>file-request.files.update</code></a> event is published to registered webhooks.</p>
 <h3 id='uri'>URI</h3>
 <p><code>POST /v1/files</code></p>
 <h3 id='request-body'>Request Body</h3>
@@ -748,8 +764,26 @@ Replace <code>MyApiKey</code> with your API key.
 <tr>
 <td><code>files</code></td>
 <td>Yes</td>
-<td>TBC</td>
-<td></td>
+<td>Array</td>
+<td>An array of JSON objects representing files to be uploaded.</td>
+</tr>
+<tr>
+<td><code>files[x].name</code></td>
+<td>Yes</td>
+<td>String</td>
+<td>The original name of the file.</td>
+</tr>
+<tr>
+<td><code>files[x].type</code></td>
+<td>Yes</td>
+<td>String</td>
+<td>The MIME type of the file, e.g. &quot;image/jpeg&quot;.</td>
+</tr>
+<tr>
+<td><code>files[x].contents</code></td>
+<td>Yes</td>
+<td>String</td>
+<td>The Base64 encoded contents of the file.</td>
 </tr>
 <tr>
 <td><code>expiryInterval</code></td>
@@ -773,9 +807,9 @@ Replace <code>MyApiKey</code> with your API key.
 <h3 id='response-body'>Response Body</h3>
 <p>Contains a <a href="#file">File</a> JSON Object.</p>
 <h2 id='download-a-specific-file'>Download a Specific File</h2>
-<p>Downloads an existing file as a stream of data.</p>
+<p>Downloads an existing file as a stream of data. Optionally specify image dimensions to download a thumbnail of the file (only works with image files, obviously!).</p>
 
-<p>Optionally specify image dimensions to download a thumbnail of the file (only works with image files, obviously!).</p>
+<p>For patient privacy, files stored in the cloud are not accessible using a publicly accessible URL. Access to files is only possible using this endpoint.</p>
 <h3 id='uri-2'>URI</h3>
 <p><code>GET /v1/files/{fileId}?imageSize=200x140</code></p>
 <h3 id='request-parameters'>Request Parameters</h3>
