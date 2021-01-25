@@ -66,10 +66,10 @@ This endpoint causes the following sequence of events:
   4. The SIP proxy should observe the successful SIP registration of the device, and send a SIP invite to the registered SIP URI.
   5. The device receives the SIP invite and updates its calling UI with the caller ID. At this point, the patient user can accept the call to begin talking.
 
-When attempting to call a patient, a VoIP call should be considered to have failed and a PSTN call made instead if any of the following circumstances:
+When attempting to call a patient, a VoIP call should be considered to have failed and a PSTN call made instead if any of the following circumstances occur:
 
   - None of the calls made to this endpoint return 202 Accepted. This indicates this patient user has no devices configured to accept an inbound VoIP call.
-  - None of the calls made to this endpoint result in a SIP registration within before a reasonable timeout. In this case, the device could not register in reasonable time, and a PSTN call should be made to maintain a reasonable user experience for the caller.
+  - None of the calls made to this endpoint result in a SIP registration before a reasonable timeout. In this case, the device could not register in reasonable time, and a PSTN call should be made to maintain a reasonable user experience for the caller.
 
 **RFC 8599**
 
