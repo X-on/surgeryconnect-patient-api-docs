@@ -986,6 +986,10 @@ Contact: &lt;sip:+447777123456@x-onsip.net;
 Expires: 7200
 Content-Length: 0
 </span></code></pre></div>
+<blockquote>
+<p>Note the <code>pn-prid=c1a21fce-8660-4c69-a98d-820a50154f93</code> field in the <code>Contact</code> header - this Push Resource ID (PRID) value is the same as <code>userDeviceId</code>, and is used by the SIP proxy to associate SIP registration records with a push-capable device.</p>
+</blockquote>
+
 <p>This endpoint causes the following sequence of events:</p>
 
 <ol>
@@ -1002,10 +1006,6 @@ Content-Length: 0
 <li>None of the calls made to this endpoint return 202 Accepted. This indicates this patient user has no devices configured to accept an inbound VoIP call.</li>
 <li>None of the calls made to this endpoint result in a SIP registration within before a reasonable timeout. In this case, the device could not register in reasonable time, and a PSTN call should be made to maintain a reasonable user experience for the caller.</li>
 </ul>
-
-<blockquote>
-<p>Note the <code>pn-prid=c1a21fce-8660-4c69-a98d-820a50154f93</code> field in the <code>Contact</code> header - this Push Resource ID (PRID) value is the same as <code>userDeviceId</code>, and is used by the SIP proxy to associate SIP registration records with a push-capable device.</p>
-</blockquote>
 
 <p><strong>RFC 8599</strong></p>
 
