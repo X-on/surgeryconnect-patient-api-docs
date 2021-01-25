@@ -13,6 +13,7 @@ includes:
   - getting_started
   - file_requests
   - files
+  - notifications
   - events_and_webhooks
 
 search: true
