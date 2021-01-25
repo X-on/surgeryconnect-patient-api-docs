@@ -89,7 +89,7 @@ For patient privacy, files stored in the cloud are not accessible using a public
 
 Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------
-`fileId` | Yes | String | The UUID of the file to download.
+`fileId` | Yes | String | The UUID of the file to download. Specified as a path parameter (see URI above).
 `imageSize` | No | String | The desired dimensions of the downloaded image, e.g. `200x140`. Use to obtain a thumbnail of the image without having to download the full image. Omit this parameter to download the image at its original size.<br><br>Since you cannot know the original image dimensions ahead of time and the server does not perform cropping, the returned image dimensions are not guaranteed to be exactly those specified in this parameter. The image is resized using aspect fill scaling, so that neither the width nor height of the returned image is smaller than the requested dimensions.<br><br>If the specified file is not an image, this parameter is ignored.
 
 ### Response 
