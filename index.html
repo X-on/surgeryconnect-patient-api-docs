@@ -318,7 +318,10 @@
                     <a href="#constructing-requests" class="toc-h2 toc-link" data-title="Constructing Requests">Constructing Requests</a>
                   </li>
                   <li>
-                    <a href="#status-codes" class="toc-h2 toc-link" data-title="Status Codes">Status Codes</a>
+                    <a href="#response-status-codes" class="toc-h2 toc-link" data-title="Response Status Codes">Response Status Codes</a>
+                  </li>
+                  <li>
+                    <a href="#error-responses" class="toc-h2 toc-link" data-title="Error Responses">Error Responses</a>
                   </li>
               </ul>
           </li>
@@ -376,12 +379,12 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>The Surgery Connect Backend is a collection of cloud services that act as a communication channel between the Surgery Connect patient apps, and Surgery Connect staff apps.</p>
+<p><strong>Surgery Connect Patients API</strong> is a collection of cloud services that act as a communication channel between the Surgery Connect patient apps, and Surgery Connect staff apps.</p>
 
 <p>These APIs provides features for communicating and interacting with patients:</p>
 
 <ul>
-<li>Make a VoIP call to a patient (for patients using the Surgery Connect mobile app).</li>
+<li>Initiate a VoIP call to a patient (for patients using the Surgery Connect mobile app).</li>
 <li>Request one or more files from a patient, and be notified when they respond.</li>
 <li>Send a message with file attachments to a patient, optionally allowing them to respond in a 2-way text conversation.</li>
 <li>Upload files to share with a patient or staff member, and download them (or a custom sized thumbnail, in the case of image files).</li>
@@ -389,7 +392,7 @@
 </ul>
 
 <aside class="notice">
-These backend services are still under review/development, and as such this documentation is subject to change.
+These services are still under review/development, and as such this documentation is subject to change.
 </aside>
 <h1 id='getting-started'>Getting Started</h1><h2 id='authentication'>Authentication</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api-endpoint-here"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer MyApiKey"</span>
@@ -408,10 +411,24 @@ These backend services are still under review/development, and as such this docu
 Replace <code>MyApiKey</code> with your API key.
 </aside>
 <h2 id='constructing-requests'>Constructing Requests</h2>
-<p>Unless otherwise specified, all request URIs should be appended to the following base URL:</p>
+<p>Unless otherwise specified, all request URIs should be appended to the following base URL, which uses the production environment:</p>
 
 <p><code>https://api.x-on.app</code></p>
-<h2 id='status-codes'>Status Codes</h2>
+<h3 id='staging-environment'>Staging Environment</h3>
+<p>For staging APIs, use the following base URL:</p>
+
+<p><code>https://staging.api.x-on.app</code></p>
+
+<p>Staging APIs are considered complete and ready for testing. They should behave according to the API documentation, and should be used to test integrations before coordinating a deployment to the production environment.</p>
+<h3 id='development-environment'>Development Environment</h3>
+<p>For development APIs, use with the following base URL:</p>
+
+<p><code>https://dev.api.x-on.app</code></p>
+
+<aside class="warning">
+Development APIs are undocumented and may behave in an incorrect or unexpected way. Only use these APIs in close consultation with the API author.
+</aside>
+<h2 id='response-status-codes'>Response Status Codes</h2>
 <p>Each API may document specific status codes and provide a specific reason for returning that status code. This is a general overview of the status codes you may expect from an API and what they will mean to you.</p>
 
 <table><thead>
@@ -434,7 +451,7 @@ Replace <code>MyApiKey</code> with your API key.
 </tr>
 <tr>
 <td>404 Not Found</td>
-<td>The object you requested doesn’t exist. The response will be empty. Retry the request</td>
+<td>The object you requested doesn’t exist. The response will be empty.</td>
 </tr>
 <tr>
 <td>429 Too Many Attempts</td>
@@ -449,6 +466,15 @@ Replace <code>MyApiKey</code> with your API key.
 <td>The requested action cannot be completed right now due server load or maintenance. Retry the request later, or after the number of seconds indicated in the <code>Retry-After</code> header.</td>
 </tr>
 </tbody></table>
+<h2 id='error-responses'>Error Responses</h2>
+<blockquote>
+<p>Example response JSON for 400 Bad Request error:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Either staffId or accountUserId is required."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Where appropriate, error responses may also include a body describing the error in further detail.</p>
 <h1 id='file-requests'>File Requests</h1><h2 id='create-a-file-request'>Create a File Request</h2>
 <blockquote>
 <p>Example request JSON:</p>
