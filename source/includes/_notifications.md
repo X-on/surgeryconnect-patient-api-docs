@@ -56,6 +56,8 @@ Expires: 7200
 Content-Length: 0
 ```
 
+> Note the `pn-prid=c1a21fce-8660-4c69-a98d-820a50154f93` field in the `Contact` header - this Push Resource ID (PRID) value is the same as `userDeviceId`, and is used by the SIP proxy to associate SIP registration records with a push-capable device.
+
 This endpoint causes the following sequence of events:
 
   1. Details of the specified user device are fetched and checked to ensure it is configured to accept inbound calls.
@@ -68,8 +70,6 @@ When attempting to call a patient, a VoIP call should be considered to have fail
 
   - None of the calls made to this endpoint return 202 Accepted. This indicates this patient user has no devices configured to accept an inbound VoIP call.
   - None of the calls made to this endpoint result in a SIP registration within before a reasonable timeout. In this case, the device could not register in reasonable time, and a PSTN call should be made to maintain a reasonable user experience for the caller.
-
-> Note the `pn-prid=c1a21fce-8660-4c69-a98d-820a50154f93` field in the `Contact` header - this Push Resource ID (PRID) value is the same as `userDeviceId`, and is used by the SIP proxy to associate SIP registration records with a push-capable device.
 
 **RFC 8599**
 
