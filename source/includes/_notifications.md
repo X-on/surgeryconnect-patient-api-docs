@@ -33,7 +33,7 @@ Code | Description
 403 Forbidden | A user device was found, but the user has configured it to refuse inbound VoIP calls. The response body will contain an `error` field with a message describing why the call was forbidden.
 404 Not Found | The specified user device doesn't exist, and so cannot be called using VoIP. The response body will be empty.
 
-### Discussion
+### Discussion
 
 Signalling for calls uses SIP. Unlike deskphones, it is not practical for patient mobile devices to remain perpetually SIP registered, since apps are backgrounded or suspended entirely to preserve device battery life. To overcome this limitation, the device must be SIP registered on demand using a push notification.
 
@@ -76,7 +76,7 @@ When attempting to call a patient, a VoIP call should be considered to have fail
 For the purposes of RFC 8599 (Push Notifications with SIP), the `userDeviceId` should be considered to be the Push Resource ID (PRID), and will be included as the value for the `pn-prid` field inside the `Contact` header.
 
 <aside class="notice">
-RFC 8599 also specifies SIP URI parameters for `pn-provider` and `pn-param`, which are designed to specify the specific platform push notification provider to use, and the respective account through which the push notification should be sent.
-
+RFC 8599 also specifies SIP URI parameters for <code>pn-provider</code> and <code>pn-param</code>, which are designed to specify the specific platform push notification provider to use, and the respective account through which the push notification should be sent.<br>
+<br>
 In our implementation, these details are the concern of this patient API, not the SIP proxy / API consumer. As such, we will not specify these additional parameters, unless mandated through the use of a pre-configured software module conforming to the RFC 8599 spec.
 </aside>
