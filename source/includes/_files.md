@@ -32,6 +32,7 @@
   { 
     "id": "7fecfb58-bfd6-462e-9e6e-f9ede76c7c95",
     "createdAt": "2021-01-15T14:33:29.145322+00:00",
+    "description": null,
     "expiresAt": "2021-01-15T15:33:29.145322+00:00",
     "fileRequestId": "f4d47426-c99a-43df-81ea-8304a62c5127",
     "mimeType": "image/jpeg",
@@ -41,6 +42,7 @@
   {
     "id": "196dccdb-079a-4bbd-a082-bb03cc8efe47",
     "createdAt": "2021-01-15T14:33:29.145322+00:00",
+    "description": "This rash is looking better here than it was yesterday.",
     "expiresAt": "2021-01-15T15:33:29.145322+00:00",
     "fileRequestId": "f4d47426-c99a-43df-81ea-8304a62c5127",
     "mimeType": "image/jpeg",
@@ -104,6 +106,7 @@ Field | Type | Description
 ----- | ---- | -----------
 `id` | String | The UUID of the file.
 `createdAt` | String | The timestamp when this file was created (uploaded) in ISO 8601 format.
+`description` | String | An optional description of the file, provided by the file uploader.
 `expiresAt` | String | The timestamp when access to this file will expire in ISO 8601 format. After this time, the file will remain in file storage, but will be inaccessible to all APIs.
 `fileRequestId` | String | The UUID of the file request this file is associated with, or `null` if not associated with any file request.
 `mimeType` | String | The MIME type of the file.

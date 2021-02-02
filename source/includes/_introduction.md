@@ -1,6 +1,6 @@
 # Introduction
 
-**Surgery Connect Patients API** is a collection of cloud services that act as a communication channel between the Surgery Connect patient apps, and Surgery Connect staff apps.
+**Surgery Connect Patient API** is a collection of cloud services that act as a communication channel between the Surgery Connect patient apps, and Surgery Connect staff apps.
 
 These APIs provides features for communicating and interacting with patients:
 

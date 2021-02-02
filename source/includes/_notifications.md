@@ -1,8 +1,6 @@
 # Notifications
 
 
-
-
 ## Call a User Device
 
 Initiates a VoIP call to a patient user.

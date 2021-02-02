@@ -80,6 +80,7 @@ Contains a [FileRequest](#filerequest) JSON Object.
     {
       "id": "7fecfb58-bfd6-462e-9e6e-f9ede76c7c95",
       "createdAt": "2021-01-15T14:33:29.145322+00:00",
+      "description": null,
       "expiresAt": "2021-01-15T15:33:29.145322+00:00",
       "mimeType": "image/jpeg",
       "originalName": "IMG_0292.JPG",
@@ -88,6 +89,7 @@ Contains a [FileRequest](#filerequest) JSON Object.
     {
       "id": "196dccdb-079a-4bbd-a082-bb03cc8efe47",
       "createdAt": "2021-01-15T14:33:29.145322+00:00",
+      "description": "This rash is looking better here than it was yesterday.",
       "expiresAt": "2021-01-15T15:33:29.145322+00:00",
       "mimeType": "image/jpeg",
       "originalName": "IMG_0293.JPG",
@@ -135,6 +137,7 @@ Field | Type | Description
 `files` | Array | The list of files sent in response to this file request. Initially empty.
 `files[x].id` | String | The UUID of the file.
 `files[x].createdAt` | String | The timestamp when this file was created (uploaded) in ISO 8601 format.
+`files[x].description` | String | An optional description of the file, provided by the file uploader.
 `files[x].expiresAt` | String | The timestamp when access to this file will expire in ISO 8601 format. After this time, the file will remain in file storage, but will be inaccessible to all APIs.
 `files[x].mimeType` | String | The MIME type of the file.
 `files[x].originalName` | String | The original name of the file when uploaded.
