@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Surgery Connect Backend Docs</title>
+    <title>Surgery Connect Patient API</title>
 
     <style media="screen">
       .highlight table td { padding: 5px; }
@@ -382,7 +382,7 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p><strong>Surgery Connect Patients API</strong> is a collection of cloud services that act as a communication channel between the Surgery Connect patient apps, and Surgery Connect staff apps.</p>
+<p><strong>Surgery Connect Patient API</strong> is a collection of cloud services that act as a communication channel between the Surgery Connect patient apps, and Surgery Connect staff apps.</p>
 
 <p>These APIs provides features for communicating and interacting with patients:</p>
 
@@ -602,6 +602,7 @@ Development APIs are undocumented and may behave in an incorrect or unexpected w
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7fecfb58-bfd6-462e-9e6e-f9ede76c7c95"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"expiresAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"originalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0292.JPG"</span><span class="p">,</span><span class="w">
@@ -610,6 +611,7 @@ Development APIs are undocumented and may behave in an incorrect or unexpected w
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"196dccdb-079a-4bbd-a082-bb03cc8efe47"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This rash is looking better here than it was yesterday."</span><span class="p">,</span><span class="w">
       </span><span class="nl">"expiresAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"originalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0293.JPG"</span><span class="p">,</span><span class="w">
@@ -685,6 +687,11 @@ Development APIs are undocumented and may behave in an incorrect or unexpected w
 <td><code>files[x].createdAt</code></td>
 <td>String</td>
 <td>The timestamp when this file was created (uploaded) in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>files[x].description</code></td>
+<td>String</td>
+<td>An optional description of the file, provided by the file uploader.</td>
 </tr>
 <tr>
 <td><code>files[x].expiresAt</code></td>
@@ -771,6 +778,7 @@ Development APIs are undocumented and may behave in an incorrect or unexpected w
   </span><span class="p">{</span><span class="w"> 
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7fecfb58-bfd6-462e-9e6e-f9ede76c7c95"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"expiresAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"fileRequestId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4d47426-c99a-43df-81ea-8304a62c5127"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
@@ -780,6 +788,7 @@ Development APIs are undocumented and may behave in an incorrect or unexpected w
   </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"196dccdb-079a-4bbd-a082-bb03cc8efe47"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This rash is looking better here than it was yesterday."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"expiresAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"fileRequestId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4d47426-c99a-43df-81ea-8304a62c5127"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
@@ -894,6 +903,11 @@ Development APIs are undocumented and may behave in an incorrect or unexpected w
 <td><code>createdAt</code></td>
 <td>String</td>
 <td>The timestamp when this file was created (uploaded) in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>String</td>
+<td>An optional description of the file, provided by the file uploader.</td>
 </tr>
 <tr>
 <td><code>expiresAt</code></td>
@@ -1040,6 +1054,7 @@ In our implementation, these details are the concern of this patient API, not th
         </span><span class="p">{</span><span class="w">
           </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7fecfb58-bfd6-462e-9e6e-f9ede76c7c95"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="nl">"expiresAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"originalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0292.JPG"</span><span class="p">,</span><span class="w">
@@ -1048,6 +1063,7 @@ In our implementation, these details are the concern of this patient API, not th
         </span><span class="p">{</span><span class="w">
           </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"196dccdb-079a-4bbd-a082-bb03cc8efe47"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This rash is looking better here than it was yesterday."</span><span class="p">,</span><span class="w">
           </span><span class="nl">"expiresAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"originalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0293.JPG"</span><span class="p">,</span><span class="w">
