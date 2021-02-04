@@ -57,7 +57,7 @@ Code | Description
 401 Unauthorized | You did not supply a valid Authorization header. The header was omitted or your API key was not valid. The response will be empty. See [Authentication](#authentication).
 404 Not Found | The object you requested doesn’t exist. The response will be empty.
 429 Too Many Attempts | Too many requests have been made within a short time period. Retry the request after the number of seconds indicated in the `Retry-After` header. 
-500 | There was an internal error. The response will be empty. This is generally a server error condition. If possible, please open a GitHub Issue so we can help you resolve the issue.
+500 Internal Server Error | There was an internal error. The response will be empty. This is generally a server error condition. If possible, please open a GitHub Issue so we can help you resolve the issue.
 503 Service Unavailable | The requested action cannot be completed right now due server load or maintenance. Retry the request later, or after the number of seconds indicated in the `Retry-After` header.
 
 ## Error Responses

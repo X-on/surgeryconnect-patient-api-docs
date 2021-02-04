@@ -24,6 +24,8 @@ Events are sent via an HTTP `POST` request with a JSON request body. The request
           "createdAt": "2021-01-15T14:33:29.145322+00:00",
           "description": null,
           "expiresAt": "2021-01-15T15:33:29.145322+00:00",
+          "imageHeight": 4032,
+          "imageWidth": 3024,
           "mimeType": "image/jpeg",
           "originalName": "IMG_0292.JPG",
           "size": 2904221
@@ -33,6 +35,8 @@ Events are sent via an HTTP `POST` request with a JSON request body. The request
           "createdAt": "2021-01-15T14:33:29.145322+00:00",
           "description": "This rash is looking better here than it was yesterday.",
           "expiresAt": "2021-01-15T15:33:29.145322+00:00",
+          "imageHeight": 4032,
+          "imageWidth": 3024,
           "mimeType": "image/jpeg",
           "originalName": "IMG_0293.JPG",
           "size": 2738706
