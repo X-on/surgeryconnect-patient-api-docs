@@ -461,7 +461,7 @@ Development APIs are undocumented and may behave in an incorrect or unexpected w
 <td>Too many requests have been made within a short time period. Retry the request after the number of seconds indicated in the <code>Retry-After</code> header.</td>
 </tr>
 <tr>
-<td>500</td>
+<td>500 Internal Server Error</td>
 <td>There was an internal error. The response will be empty. This is generally a server error condition. If possible, please open a GitHub Issue so we can help you resolve the issue.</td>
 </tr>
 <tr>
@@ -604,6 +604,8 @@ Development APIs are undocumented and may behave in an incorrect or unexpected w
       </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"expiresAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"imageHeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">4032</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"imageWidth"</span><span class="p">:</span><span class="w"> </span><span class="mi">3024</span><span class="p">,</span><span class="w">
       </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"originalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0292.JPG"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2904221</span><span class="w">
@@ -613,6 +615,8 @@ Development APIs are undocumented and may behave in an incorrect or unexpected w
       </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This rash is looking better here than it was yesterday."</span><span class="p">,</span><span class="w">
       </span><span class="nl">"expiresAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"imageHeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">4032</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"imageWidth"</span><span class="p">:</span><span class="w"> </span><span class="mi">3024</span><span class="p">,</span><span class="w">
       </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"originalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0293.JPG"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2738706</span><span class="w">
@@ -699,6 +703,16 @@ Development APIs are undocumented and may behave in an incorrect or unexpected w
 <td>The timestamp when access to this file will expire in ISO 8601 format. After this time, the file will remain in file storage, but will be inaccessible to all APIs.</td>
 </tr>
 <tr>
+<td><code>files[x].imageHeight</code></td>
+<td>Integer</td>
+<td>The height of the image file. This is <code>null</code> if the file is not an image, or if the dimensions could not otherwise be obtained.</td>
+</tr>
+<tr>
+<td><code>files[x].imageWidth</code></td>
+<td>Integer</td>
+<td>The width of the image file. This is <code>null</code> if the file is not an image, or if the dimensions could not otherwise be obtained.</td>
+</tr>
+<tr>
 <td><code>files[x].mimeType</code></td>
 <td>String</td>
 <td>The MIME type of the file.</td>
@@ -781,6 +795,8 @@ Development APIs are undocumented and may behave in an incorrect or unexpected w
     </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"expiresAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"fileRequestId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4d47426-c99a-43df-81ea-8304a62c5127"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"imageHeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">4032</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"imageWidth"</span><span class="p">:</span><span class="w"> </span><span class="mi">3024</span><span class="p">,</span><span class="w">
     </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"originalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0292.JPG"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2904221</span><span class="w">
@@ -791,6 +807,8 @@ Development APIs are undocumented and may behave in an incorrect or unexpected w
     </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This rash is looking better here than it was yesterday."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"expiresAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"fileRequestId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4d47426-c99a-43df-81ea-8304a62c5127"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"imageHeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">4032</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"imageWidth"</span><span class="p">:</span><span class="w"> </span><span class="mi">3024</span><span class="p">,</span><span class="w">
     </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"originalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0293.JPG"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2738706</span><span class="w">
@@ -881,7 +899,7 @@ Development APIs are undocumented and may behave in an incorrect or unexpected w
 <td><code>imageSize</code></td>
 <td>No</td>
 <td>String</td>
-<td>The desired dimensions of the downloaded image, e.g. <code>200x140</code>. Use to obtain a thumbnail of the image without having to download the full image. Omit this parameter to download the image at its original size.<br><br>Since you cannot know the original image dimensions ahead of time and the server does not perform cropping, the returned image dimensions are not guaranteed to be exactly those specified in this parameter. The image is resized using aspect fill scaling, so that neither the width nor height of the returned image is smaller than the requested dimensions.<br><br>If the specified file is not an image, this parameter is ignored.</td>
+<td>The desired dimensions of the downloaded image, e.g. <code>200x140</code>. Use to obtain a thumbnail of the image without having to download the full image. Omit this parameter to download the image at its original size.<br><br>The server does not perform cropping, so the returned image dimensions are not guaranteed to be exactly those specified in this parameter. The image is resized using aspect fill scaling, so that neither the width nor height of the returned image is smaller than the requested dimensions.<br><br>If the specified file is not an image, this parameter is ignored.</td>
 </tr>
 </tbody></table>
 <h3 id='response'>Response</h3>
@@ -918,6 +936,16 @@ Development APIs are undocumented and may behave in an incorrect or unexpected w
 <td><code>fileRequestId</code></td>
 <td>String</td>
 <td>The UUID of the file request this file is associated with, or <code>null</code> if not associated with any file request.</td>
+</tr>
+<tr>
+<td><code>imageHeight</code></td>
+<td>Integer</td>
+<td>The height of the image file. This is <code>null</code> if the file is not an image, or if the dimensions could not otherwise be obtained.</td>
+</tr>
+<tr>
+<td><code>imageWidth</code></td>
+<td>Integer</td>
+<td>The width of the image file. This is <code>null</code> if the file is not an image, or if the dimensions could not otherwise be obtained.</td>
 </tr>
 <tr>
 <td><code>mimeType</code></td>
@@ -1056,6 +1084,8 @@ In our implementation, these details are the concern of this patient API, not th
           </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="nl">"expiresAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"imageHeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">4032</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"imageWidth"</span><span class="p">:</span><span class="w"> </span><span class="mi">3024</span><span class="p">,</span><span class="w">
           </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"originalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0292.JPG"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2904221</span><span class="w">
@@ -1065,6 +1095,8 @@ In our implementation, these details are the concern of this patient API, not th
           </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This rash is looking better here than it was yesterday."</span><span class="p">,</span><span class="w">
           </span><span class="nl">"expiresAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T15:33:29.145322+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"imageHeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">4032</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"imageWidth"</span><span class="p">:</span><span class="w"> </span><span class="mi">3024</span><span class="p">,</span><span class="w">
           </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"originalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0293.JPG"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2738706</span><span class="w">
