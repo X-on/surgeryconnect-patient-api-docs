@@ -899,7 +899,7 @@ Development APIs are undocumented and may behave in an incorrect or unexpected w
 <td><code>imageSize</code></td>
 <td>No</td>
 <td>String</td>
-<td>The desired dimensions of the downloaded image, e.g. <code>200x140</code>. Use to obtain a thumbnail of the image without having to download the full image. Omit this parameter to download the image at its original size.<br><br>The server does not perform cropping, so the returned image dimensions are not guaranteed to be exactly those specified in this parameter. The image is resized using aspect fill scaling, so that neither the width nor height of the returned image is smaller than the requested dimensions.<br><br>If the specified file is not an image, this parameter is ignored.</td>
+<td>The desired dimensions of the downloaded image, e.g. <code>200x140</code>. Use to obtain a thumbnail of the image without having to download the full image. Omit this parameter to download the image at its original size.<br><br>The server does not perform cropping, so the returned image dimensions are not guaranteed to be exactly those specified in this parameter. The image is resized using aspect fill scaling, so that neither the width nor height of the returned image is smaller than the requested dimensions (unless the resultant size is <em>larger</em> than the original image size, in which case the original image size is returned).<br><br>If the specified file is not an image, this parameter is ignored.</td>
 </tr>
 </tbody></table>
 <h3 id='response'>Response</h3>
