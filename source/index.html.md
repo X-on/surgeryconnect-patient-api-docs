@@ -11,9 +11,9 @@ toc_footers:
 includes:
   - introduction
   - getting_started
+  - calls
   - file_requests
   - files
-  - notifications
   - events_and_webhooks
 
 search: true

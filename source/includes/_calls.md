@@ -1,4 +1,4 @@
-# Notifications
+# Calls
 
 
 ## Call a User Device
@@ -7,7 +7,7 @@ Initiates a VoIP call to a patient user.
 
 ### URI
 
-`POST /v1/notifications/call/{userDeviceId}`
+`POST /v1/calls/{userDeviceId}`
 
 ### Request Parameters
 
@@ -48,13 +48,13 @@ From: John Smith <sip:+447777123456@x-onsip.net>;tag=456248
 Call-ID: 843817637684230@998sdasdh09
 CSeq: 1826 REGISTER
 Contact: <sip:+447777123456@x-onsip.net;
-  pn-prid=c1a21fce-8660-4c69-a98d-820a50154f93>;
-  +sip.pnsreg
+  pn-provider=xon;
+  pn-prid=c1a21fce-8660-4c69-a98d-820a50154f93>
 Expires: 7200
 Content-Length: 0
 ```
 
-> Note the `pn-prid=c1a21fce-8660-4c69-a98d-820a50154f93` field in the `Contact` header - this Push Resource ID (PRID) value is the same as `userDeviceId`, and is used by the SIP proxy to associate SIP registration records with a push-capable device.
+> Note the `pn-prid=c1a21fce-8660-4c69-a98d-820a50154f93` field in the `Contact` header - this Push Resource ID (PRID) value is the same as `userDeviceId`, and is used by the SIP proxy to associate SIP registration records with a push-capable device. The `pn-provider=xon` field is also specified to tell the SIP proxy to use the X-on push notification service.
 
 This endpoint causes the following sequence of events:
 
@@ -73,8 +73,10 @@ When attempting to call a patient, a VoIP call should be considered to have fail
 
 For the purposes of RFC 8599 (Push Notifications with SIP), the `userDeviceId` should be considered to be the Push Resource ID (PRID), and will be included as the value for the `pn-prid` field inside the `Contact` header.
 
+Additionally, the `pn-provider` field with the fixed value `xon` should be included in the `Contact` header.
+
 <aside class="notice">
-RFC 8599 also specifies SIP URI parameters for <code>pn-provider</code> and <code>pn-param</code>, which are designed to specify the platform push notification provider to use (e.g. APNS), and the respective account through which the push notification should be sent (e.g. the app bundle ID and push notification service ID).<br>
+RFC 8599 also specifies a SIP URI parameter for <code>pn-param</code>, which is designed to specify the platform account through which the push notification should be sent (e.g. the app bundle ID and push notification service ID).<br>
 <br>
-In our implementation, these details are the concern of this patient API, not the SIP proxy / API consumer. As such, we will not specify these additional parameters, unless mandated through the use of a pre-configured software module conforming to the RFC 8599 spec.
+In our implementation, that detail is the concern of this patient API, not the SIP proxy / API consumer. As such, we will not specify this additional parameter, unless mandated through the use of a pre-configured software module conforming to the RFC 8599 spec.
 </aside>
