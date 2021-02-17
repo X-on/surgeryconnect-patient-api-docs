@@ -10,11 +10,13 @@
   "files": [
     {
       "name": "IMG_0292.JPG",
+      "description": null,
       "type": "image/jpeg",
       "contents": "..."
     },
     {
       "name": "IMG_0293.JPG",
+      "description": "This rash is looking better here than it was yesterday.",
       "type": "image/jpeg",
       "contents": "..."
     }
@@ -70,6 +72,7 @@ Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------
 `files` | Yes | Array | An array of JSON objects representing files to be uploaded.
 `files[x].name` | Yes | String | The original name of the file.
+`files[x].description` | No | String | An optional description of the file.
 `files[x].type` | Yes | String | The MIME type of the file, e.g. "image/jpeg".
 `files[x].contents` | Yes | String | The Base64 encoded contents of the file.
 `expiryInterval` | No | Integer | The time interval (in seconds) after which the file will expire and subsequently be removed from storage. If you don't specify a value, the file will not expire automatically.
