@@ -871,11 +871,13 @@ In our implementation, that detail is the concern of this patient API, not the S
   </span><span class="nl">"files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0292.JPG"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"contents"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0293.JPG"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This rash is looking better here than it was yesterday."</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"contents"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -940,6 +942,12 @@ In our implementation, that detail is the concern of this patient API, not the S
 <td>Yes</td>
 <td>String</td>
 <td>The original name of the file.</td>
+</tr>
+<tr>
+<td><code>files[x].description</code></td>
+<td>No</td>
+<td>String</td>
+<td>An optional description of the file.</td>
 </tr>
 <tr>
 <td><code>files[x].type</code></td>
