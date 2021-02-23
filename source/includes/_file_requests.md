@@ -109,7 +109,6 @@
   "shortLinkExpiresAt": null,
   "shortLinkId": "a49ekq3j",
   "staffId": "c46c3407-9c79-498f-a713-07b7d8f1fabf",
-  "staffName": "Dr Rachel Williams",
   "type": "photo"
 }
 ```
@@ -138,7 +137,7 @@ Parameter | Required | Type | Description
 `patientMobile` | No | String | Mobile number of the patient in E.164 format. Used to identify the patient user this file request should be linked to.<br><br>`patientMobile` is preferred for patient user identification, so it should be passed whenever available. If `patientMobile` is not provided, then `patientExternalId` will be required.
 `patientExternalId` | No | String | An identifier that can be used to consistently identify this patient over time. Used to identify the patient user this file request should be linked to in the case that a patient mobile number is not available.<br><br>If `patientExternalId` is not provided, then `patientMobile` will be required.
 `recipientMobile` | No | String | Mobile number of the recipient in E.164 format. Used to identify the user who should be notified of this file request. In most cases this will be the patient user, but it could also be a proxy (e.g. carer or paramedic).<br><br>When `recipientMobile` is provided and `attemptAppDelivery` is `true`, the recipient will be notified in the mobile app if they're an app user, else via SMS.<br><br>When `recipientMobile` is provided and `attemptAppDelivery` is `false`, the recipient will be notified with an SMS, whether or not they're an app user.<br><br>If `recipientMobile` is not provided, then `recipientEmail` will be required.
-`recipientEmail` | No | String | Email address of the recipient. Used to identify the user who should be notified of this file request. In most cases this will be the patient user, but it could also be a proxy (e.g. carer or paramedic)<br><br>When `recipientEmail` is provided, the recipient will be notified of the file request by email.<br><br>If `recipientEmail` is not provided, then `recipientMobile` will be required.<br><br>N.B. This parameter does **not** affect in-app/SMS delivery. If `recipientMobile` matches an app-using patient and `attemptAppDelivery` is `true`, the file request will be delivered to the mobile app, regardless of this parameter. Similarly if both `recipientMobile` and `recipientEmail` are provided, the patient will be notified on their mobile (in-app/SMS) **and** email.
+`recipientEmail` | No | String | Email address of the recipient. Used to identify the user who should be notified of this file request. In most cases this will be the patient user, but it could also be a proxy (e.g. carer or paramedic).<br><br>When `recipientEmail` is provided, the recipient will be notified of the file request by email.<br><br>If `recipientEmail` is not provided, then `recipientMobile` will be required.<br><br>N.B. This parameter does **not** affect in-app/SMS delivery. If `recipientMobile` matches an app-using patient and `attemptAppDelivery` is `true`, the file request will be delivered to the mobile app, regardless of this parameter. Similarly if both `recipientMobile` and `recipientEmail` are provided, the patient will be notified on their mobile (in-app/SMS) **and** email.
 `recipientIsProxy` | No | Boolean | Indicates whether this request is being sent to a proxy (e.g. carer or paramedic) rather than the patient themselves.<br><br>When `true`, the message about the file request may contain additional copy indicating that the file request pertains to a patient in their care.<br><br>Defaults to `false`.
 `attemptAppDelivery` | No | Boolean | Indicates whether or not this file request should be sent to the mobile app (if the recipient is using the app).<br><br>When `false`, the created file request will **not** be associated with an app-using patient user, but a non-app user. This ensures the file request is not received in app, but by SMS and/or email (according to the inclusion of `recipientMobile` and/or `recipientEmail`).<br><br>Defaults to `true`. You might set this to `false` if you know the recipient is a proxy, and you want to notify them by SMS/email so they respond via a web page, rather than inside the app.
 
@@ -196,7 +195,6 @@ The staff user is identified using their user ID in the patient database (if kno
   "shortLinkExpiresAt": null,
   "shortLinkId": "a49ekq3j",
   "staffId": "c46c3407-9c79-498f-a713-07b7d8f1fabf",
-  "staffName": "Dr Rachel Williams",
   "type": "photo"
 }
 ```
@@ -244,5 +242,4 @@ Field | Type | Description
 `shortLinkExpiresAt` | String | The timestamp when access to this file request via the short link URL will expire. After this time, the patient will be unable to respond to this file request.
 `shortLinkId` | String | An ID that can be used to form a public URL to the file request. This allows an unauthenticated user to access a webpage through which they can view/respond to the file request.
 `staffId` | String | The UUID of the staff user the file request was sent from.
-`staffName` | String | The name of the staff member requesting a file, shown to the patient.
 `type` | String | Determines what file type/size restrictions should be used when validating user-selected files.
