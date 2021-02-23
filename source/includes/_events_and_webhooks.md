@@ -43,7 +43,7 @@ Events are sent via an HTTP `POST` request with a JSON request body. The request
         }
       ],
       "patientId": "9d6ad525-90c6-4c03-8f05-63584ee20a29",
-      "prompt": "Please take a close-up photo of the rash on the back of your right hand.",
+      "prompt": "Please take a photo of your rash.",
       "shortLinkExpiresAt": null,
       "shortLinkId": "a49ekq3j",
       "staffId": "c46c3407-9c79-498f-a713-07b7d8f1fabf",

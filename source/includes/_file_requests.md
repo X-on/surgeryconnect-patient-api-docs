@@ -3,21 +3,96 @@
 
 ## Create a File Request
 
-> Example request JSON:
+> Example request JSON to send file request to patient via mobile app if the patient is an app user, otherwise SMS:
 
 ```json
 {
-  "prompt": "Please take a close-up photo of the rash on the back of your right hand.",
+  "prompt": "Please take a photo of your rash.",
   "type": "photo",
   "accountUserId": "42",
   "accountId": "12",
   "staffName": "Dr Rachel Williams",
-  "patientMobile": "+447777123456",
   "patientDateOfBirth": "1980-06-17",
   "patientFirstName": "John",
-  "patientLastName": "Smith"
+  "patientLastName": "Smith",
+  "patientMobile": "+447777123456",
+  "recipientMobile": "447777123456"
 }
 ```
+
+> Example request JSON to send file request via email:
+
+```json
+{
+  "prompt": "Please take a photo of your rash.",
+  "type": "photo",
+  "accountUserId": "42",
+  "accountId": "12",
+  "staffName": "Dr Rachel Williams",
+  "patientDateOfBirth": "1980-06-17",
+  "patientFirstName": "John",
+  "patientLastName": "Smith",
+  "patientMobile": "+447777123456",
+  "recipientEmail": "johnsmith@example.com",
+  "attemptAppDelivery": true
+}
+```
+> Note in the above example the patient does still have a mobile number and it will be used to try and identify the patient user. If they are an app user, they will receive this request both in the mobile app (since `attemptAppDelivery` is `true`), and **also** by email (since `recipientEmail` was specified).
+
+> Example request JSON to send file request via email, where patient does not have a mobile number at all:
+
+```json
+{
+  "prompt": "Please take a photo of your rash.",
+  "type": "photo",
+  "accountUserId": "42",
+  "accountId": "12",
+  "staffName": "Dr Rachel Williams",
+  "patientDateOfBirth": "1980-06-17",
+  "patientFirstName": "John",
+  "patientLastName": "Smith",
+  "patientExternalId": "EMISIM1-5005730",
+  "recipientEmail": "johnsmith@example.com"
+}
+```
+> In the above example, a 'shell' patient user is identified/created using `patientExternalIdentifier`, and so the patient will not see this file request in the mobile app even if they're using it. The inclusion of `recipientEmail` means the patient will be notified of this file request by email.
+
+> Example request JSON to send file request via SMS (NOT to mobile app):
+
+```json
+{
+  "prompt": "Please take a photo of your rash.",
+  "type": "photo",
+  "accountUserId": "42",
+  "accountId": "12",
+  "staffName": "Dr Rachel Williams",
+  "patientDateOfBirth": "1980-06-17",
+  "patientFirstName": "John",
+  "patientLastName": "Smith",
+  "patientMobile": "+447777123456",
+  "attemptAppDelivery": false
+}
+```
+> In the above example, a 'shell' patient user identified/created using `patientMobile` (even if an app-using patient user exists with that mobile) since `attemptAppDelivery` is `false`. The patient will be notified of this file request by SMS.
+
+> Example request JSON to send file request to a proxy (e.g. carer or paramedic) via the mobile app or SMS:
+
+```json
+{
+  "prompt": "Please take a photo of your rash.",
+  "type": "photo",
+  "accountUserId": "42",
+  "accountId": "12",
+  "staffName": "Dr Rachel Williams",
+  "patientDateOfBirth": "1980-06-17",
+  "patientFirstName": "John",
+  "patientLastName": "Smith",
+  "patientMobile": "+447777123456",
+  "recipientMobile": "+47123456789",
+  "recipientIsProxy": true
+}
+```
+> In the above example, the patient 
 
 > Example response JSON:
 
@@ -28,7 +103,7 @@
   "createdAt": "2021-01-15T14:32:17.452104+00:00",
   "files": [],
   "patientId": "9d6ad525-90c6-4c03-8f05-63584ee20a29",
-  "prompt": "Please take a close-up photo of the rash on the back of your right hand.",
+  "prompt": "Please take a photo of your rash.",
   "shortLinkExpiresAt": null,
   "shortLinkId": "a49ekq3j",
   "staffId": "c46c3407-9c79-498f-a713-07b7d8f1fabf",
@@ -37,11 +112,9 @@
 }
 ```
 
-Creates a new file request and notifies the patient.
+Creates a new file request and notifies the patient or a proxy (e.g. carer or paramedic).
 
-The patient is identified using their mobile number. If a patient app user already exists with that mobile number the file request is associated with them and they receive a notification to the app. If no patient already exists with that mobile number, a new 'shell' user is created, and the patient receives an SMS with a link to respond to the file request in a web browser.
-
-The staff user is identified using their user ID in the patient database (if known), else using their X-on account user ID. If no staff user is found with the provided ID, a new 'shell' user is created.
+A *patient* is the person that is associated with the resulting file request. A *recipient* is the person that is notified about file request (the recipient of the `message` the file request is wrapped in). In most cases the patient and recipient are the same person, but they might be different if a carer, paramedic, guardian, or other proxy needs to respond on behalf of the patient.
 
 ### URI
 
@@ -53,19 +126,35 @@ Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------
 `prompt` | No | String | A textual prompt to show to the patient, directing them to upload a particular file.
 `type` | Yes | String | Determines what file type/size restrictions should be used when validating user-selected files. The only option at the moment is "photo".
-`staffId` | No | String | The UUID of the staff user in the patient database (where known).
-`accountUserId` | Yes, if `staffId` is not specified; otherwise no. | String | The ID of the X-on account user sending the message.
+`staffId` | No | String | The UUID of the staff user in the patient database (where known).<br><br>If `staffId` is not provided, then `accountUserId` will be required.
+`accountUserId` | No | String | The ID of the X-on account user sending the message.<br><br>If `accountUserId` is not provided, then `staffId` will be required.
 `accountId` | Yes | String | The ID of the X-on account sending the message. Used to associate a file request with a particular account, so that any SMS notifications are sent using that account's SMS gateway.
 `staffName` | Yes | String | The name of the staff member requesting a file, shown to the patient.
-`patientMobile` | Yes | String | Mobile number of the patient in E.164 format.
-`patientDateOfBirth` | Yes | String | Patient date of birth in ISO 8601 date format. Used to allow patient to verify their identity to respond to a file request.
+`patientDateOfBirth` | Yes | String | Patient date of birth in ISO 8601 date format, such as `YYYY-MM-DD`. Used to verify a patient's identity when the patient or proxy responds to a file request.
 `patientFirstName` | No | String | The patient's first name.
 `patientLastName` | No | String | The patient's last name.
+`patientMobile` | No | String | Mobile number of the patient in E.164 format. Used to identify the patient user this file request should be linked to.<br><br>`patientMobile` is preferred for patient user identification, so it should be passed whenever available. If `patientMobile` is not provided, then `patientExternalId` will be required.
+`patientExternalId` | No | String | An identifier that can be used to consistently identify this patient over time. Used to identify the patient user this file request should be linked to in the case that a patient mobile number is not available.<br><br>If `patientExternalId` is not provided, then `patientMobile` will be required.
+`recipientMobile` | No | String | Mobile number of the recipient in E.164 format. Used to identify the user who should be notified of this file request. In most cases this will be the patient user, but it could also be a proxy (e.g. carer or paramedic).<br><br>When `recipientMobile` is provided and `attemptAppDelivery` is `true`, the recipient will be notified in the mobile app if they're an app user, else via SMS.<br><br>When `recipientMobile` is provided and `attemptAppDelivery` is `false`, the recipient will be notified with an SMS, whether or not they're an app user.<br><br>If `recipientMobile` is not provided, then `recipientEmail` will be required.
+`recipientEmail` | No | String | Email address of the recipient. Used to identify the user who should be notified of this file request. In most cases this will be the patient user, but it could also be a proxy (e.g. carer or paramedic)<br><br>When `recipientEmail` is provided, the recipient will be notified of the file request by email.<br><br>If `recipientEmail` is not provided, then `recipientMobile` will be required.<br><br>N.B. This parameter does **not** affect in-app/SMS delivery. If `recipientMobile` matches an app-using patient and `attemptAppDelivery` is `true`, the file request will be delivered to the mobile app, regardless of this parameter. Similarly if both `recipientMobile` and `recipientEmail` are provided, the patient will be notified on their mobile (in-app/SMS) **and** email.
+`recipientIsProxy` | No | Boolean | Indicates whether this request is being sent to a proxy (e.g. carer or paramedic) rather than the patient themselves.<br><br>When `true`, the message about the file request may contain additional copy indicating that the file request pertains to a patient in their care.<br><br>Defaults to `false`.
+`attemptAppDelivery` | No | Boolean | Indicates whether or not this file request should be sent to the mobile app (if the recipient is using the app).<br><br>When `false`, the created file request will **not** be associated with an app-using patient user, but a shell user. This ensures the file request is not received in app, but by SMS and/or email (according to the inclusion of `recipientMobile` and/or `recipientEmail`).<br><br>Defaults to `true`. You might set this to `false` if you know the recipient is a proxy, and you want to notify them by SMS/email so they respond via a web page, rather than inside the app.
 
 ### Response Body
 
 Contains a [FileRequest](#filerequest) JSON Object.
 
+### Discussion
+
+The patient user is identified by matching their (verified) mobile number, date of birth, and name to the values in this request. If a patient app user already exists where the verified mobile number, DOB, and name don't conflict, the file request is associated with them. If no patient already exists with that verified mobile number, a new 'shell' user is created, and the file request is associated with that user.
+
+A mobile number for a patient might not exist (e.g. none recorded against their patient record in the clinical system). In this case it is assumed the patient is not using the mobile app, and a shell user is retrieved or created. To prevent creating a new shell user every time, a `patientExternalId` must be provided that is unique to that patient, such as one vended by the clinical system containing the patient record prefixed with an identifier for that clinical system, e.g. "EMISIM1-5005730".
+
+The recipient user is identified by matching their (verified) mobile number to the `recipientMobile` request parameter, if provided. If no user already exists with that verified mobile number, a shell user with that mobile number is retrieved or created. If `recipientMobile` is not provided, a shell user with the value in `recipientEmail` is retrieved or created.
+
+The resulting recipient user is associated with a newly created message wrapping the file request, and they are notified by mobile (in-app/SMS) and/or email according to the values specified in `recipientMobile`, `recipientEmail`, and `attemptAppDelivery`.
+
+The staff user is identified using their user ID in the patient database (if known), else using their X-on account user ID. If no staff user is found with the provided ID, a new shell user is created.
 
 ## Get a Specific File Request
 
@@ -101,7 +190,7 @@ Contains a [FileRequest](#filerequest) JSON Object.
     }
   ],
   "patientId": "9d6ad525-90c6-4c03-8f05-63584ee20a29",
-  "prompt": "Please take a close-up photo of the rash on the back of your right hand.",
+  "prompt": "Please take a photo of your rash.",
   "shortLinkExpiresAt": null,
   "shortLinkId": "a49ekq3j",
   "staffId": "c46c3407-9c79-498f-a713-07b7d8f1fabf",
