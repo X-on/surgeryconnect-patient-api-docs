@@ -685,7 +685,6 @@ In our implementation, that detail is the concern of this patient API, not the S
   </span><span class="nl">"shortLinkExpiresAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"shortLinkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a49ekq3j"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"staffId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c46c3407-9c79-498f-a713-07b7d8f1fabf"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"staffName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dr Rachel Williams"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"photo"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -779,7 +778,7 @@ In our implementation, that detail is the concern of this patient API, not the S
 <td><code>recipientEmail</code></td>
 <td>No</td>
 <td>String</td>
-<td>Email address of the recipient. Used to identify the user who should be notified of this file request. In most cases this will be the patient user, but it could also be a proxy (e.g. carer or paramedic)<br><br>When <code>recipientEmail</code> is provided, the recipient will be notified of the file request by email.<br><br>If <code>recipientEmail</code> is not provided, then <code>recipientMobile</code> will be required.<br><br>N.B. This parameter does <strong>not</strong> affect in-app/SMS delivery. If <code>recipientMobile</code> matches an app-using patient and <code>attemptAppDelivery</code> is <code>true</code>, the file request will be delivered to the mobile app, regardless of this parameter. Similarly if both <code>recipientMobile</code> and <code>recipientEmail</code> are provided, the patient will be notified on their mobile (in-app/SMS) <strong>and</strong> email.</td>
+<td>Email address of the recipient. Used to identify the user who should be notified of this file request. In most cases this will be the patient user, but it could also be a proxy (e.g. carer or paramedic).<br><br>When <code>recipientEmail</code> is provided, the recipient will be notified of the file request by email.<br><br>If <code>recipientEmail</code> is not provided, then <code>recipientMobile</code> will be required.<br><br>N.B. This parameter does <strong>not</strong> affect in-app/SMS delivery. If <code>recipientMobile</code> matches an app-using patient and <code>attemptAppDelivery</code> is <code>true</code>, the file request will be delivered to the mobile app, regardless of this parameter. Similarly if both <code>recipientMobile</code> and <code>recipientEmail</code> are provided, the patient will be notified on their mobile (in-app/SMS) <strong>and</strong> email.</td>
 </tr>
 <tr>
 <td><code>recipientIsProxy</code></td>
@@ -843,7 +842,6 @@ In our implementation, that detail is the concern of this patient API, not the S
   </span><span class="nl">"shortLinkExpiresAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"shortLinkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a49ekq3j"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"staffId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c46c3407-9c79-498f-a713-07b7d8f1fabf"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"staffName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dr Rachel Williams"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"photo"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -967,11 +965,6 @@ In our implementation, that detail is the concern of this patient API, not the S
 <td><code>staffId</code></td>
 <td>String</td>
 <td>The UUID of the staff user the file request was sent from.</td>
-</tr>
-<tr>
-<td><code>staffName</code></td>
-<td>String</td>
-<td>The name of the staff member requesting a file, shown to the patient.</td>
 </tr>
 <tr>
 <td><code>type</code></td>
@@ -1233,7 +1226,6 @@ In our implementation, that detail is the concern of this patient API, not the S
       </span><span class="nl">"shortLinkExpiresAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"shortLinkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a49ekq3j"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"staffId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c46c3407-9c79-498f-a713-07b7d8f1fabf"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"staffName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dr Rachel Williams"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"photo"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"addedFileIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
