@@ -592,10 +592,12 @@ In our implementation, that detail is the concern of this patient API, not the S
   </span><span class="nl">"patientFirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"patientLastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"patientMobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+447777123456"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"recipientMobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"447777123456"</span><span class="w">
+  </span><span class="nl">"recipientMobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+447777123456"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
+<p>In the above example, the recipient user is identified using <code>recipientMobile</code>. They will be notified in the app if they&#39;re an app user, otherwise by SMS. In this example it happens that the patient and recipient are the same person (clear because <code>patientMobile</code> and <code>recipientMobile</code> are identical).</p>
+
 <p>Example request JSON to send file request via email:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -613,7 +615,7 @@ In our implementation, that detail is the concern of this patient API, not the S
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>Note in the above example the patient does still have a mobile number and it will be used to try and identify the patient user. If they are an app user, they will receive this request both in the mobile app (since <code>attemptAppDelivery</code> is <code>true</code>), and <strong>also</strong> by email (since <code>recipientEmail</code> was specified).</p>
+<p>In the above example, a non-app recipient user is identified using <code>recipientEmail</code> (even if they&#39;re an app user), since <code>recipientMobile</code> is not provided. The recipient—assumed to be the patient themselves since <code>recipientIsProxy</code> defaults to <code>false</code>—will only be notified of this request by email.</p>
 
 <p>Example request JSON to send file request via email, where patient does not have a mobile number at all:</p>
 </blockquote>
@@ -631,7 +633,7 @@ In our implementation, that detail is the concern of this patient API, not the S
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>In the above example, a &#39;shell&#39; patient user is identified/created using <code>patientExternalIdentifier</code>, and so the patient will not see this file request in the mobile app even if they&#39;re using it. The inclusion of <code>recipientEmail</code> means the patient will be notified of this file request by email.</p>
+<p>In the above example, the patient user is identified/created using <code>patientExternalIdentifier</code> since <code>patientMobile</code> is not provided. As with the previous example, a non-app recipient will be identified and notified of the file request by email.</p>
 
 <p>Example request JSON to send file request via SMS (NOT to mobile app):</p>
 </blockquote>
@@ -645,11 +647,12 @@ In our implementation, that detail is the concern of this patient API, not the S
   </span><span class="nl">"patientFirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"patientLastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"patientMobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+447777123456"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"recipientMobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+447755012345"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"attemptAppDelivery"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>In the above example, a &#39;shell&#39; patient user identified/created using <code>patientMobile</code> (even if an app-using patient user exists with that mobile) since <code>attemptAppDelivery</code> is <code>false</code>. The patient will be notified of this file request by SMS.</p>
+<p>In the above example, a non-app recipient user is identified/created using <code>recipientMobile</code> even if an app-using patient user exists with that mobile, since <code>attemptAppDelivery</code> is <code>false</code>. The recipient will be notified of the file request by SMS.</p>
 
 <p>Example request JSON to send file request to a proxy (e.g. carer or paramedic) via the mobile app or SMS:</p>
 </blockquote>
@@ -668,7 +671,7 @@ In our implementation, that detail is the concern of this patient API, not the S
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>In the above example, the patient </p>
+<p>In the above example, a recipient user is identified using <code>recipientMobile</code>. They will be notified in the app if they&#39;re an app user, otherwise by SMS. Since <code>recipientIsProxy</code> is <code>true</code>, the message will indicate the file request is relating to a patient in their care.</p>
 
 <p>Example response JSON:</p>
 </blockquote>
@@ -788,21 +791,21 @@ In our implementation, that detail is the concern of this patient API, not the S
 <td><code>attemptAppDelivery</code></td>
 <td>No</td>
 <td>Boolean</td>
-<td>Indicates whether or not this file request should be sent to the mobile app (if the recipient is using the app).<br><br>When <code>false</code>, the created file request will <strong>not</strong> be associated with an app-using patient user, but a shell user. This ensures the file request is not received in app, but by SMS and/or email (according to the inclusion of <code>recipientMobile</code> and/or <code>recipientEmail</code>).<br><br>Defaults to <code>true</code>. You might set this to <code>false</code> if you know the recipient is a proxy, and you want to notify them by SMS/email so they respond via a web page, rather than inside the app.</td>
+<td>Indicates whether or not this file request should be sent to the mobile app (if the recipient is using the app).<br><br>When <code>false</code>, the created file request will <strong>not</strong> be associated with an app-using patient user, but a non-app user. This ensures the file request is not received in app, but by SMS and/or email (according to the inclusion of <code>recipientMobile</code> and/or <code>recipientEmail</code>).<br><br>Defaults to <code>true</code>. You might set this to <code>false</code> if you know the recipient is a proxy, and you want to notify them by SMS/email so they respond via a web page, rather than inside the app.</td>
 </tr>
 </tbody></table>
 <h3 id='response-body'>Response Body</h3>
 <p>Contains a <a href="#filerequest">FileRequest</a> JSON Object.</p>
 <h3 id='discussion'>Discussion</h3>
-<p>The patient user is identified by matching their (verified) mobile number, date of birth, and name to the values in this request. If a patient app user already exists where the verified mobile number, DOB, and name don&#39;t conflict, the file request is associated with them. If no patient already exists with that verified mobile number, a new &#39;shell&#39; user is created, and the file request is associated with that user.</p>
+<p>The patient user is identified by matching their (verified) mobile number, date of birth, and name to the values in this request. If a patient app user already exists where the verified mobile number, DOB, and name don&#39;t conflict, the file request is associated with them. If no patient already exists with that verified mobile number, a new non-app user is created, and the file request is associated with that user.</p>
 
-<p>A mobile number for a patient might not exist (e.g. none recorded against their patient record in the clinical system). In this case it is assumed the patient is not using the mobile app, and a shell user is retrieved or created. To prevent creating a new shell user every time, a <code>patientExternalId</code> must be provided that is unique to that patient, such as one vended by the clinical system containing the patient record prefixed with an identifier for that clinical system, e.g. &quot;EMISIM1-5005730&quot;.</p>
+<p>A mobile number for a patient might not exist (e.g. none recorded against their patient record in the clinical system). In this case it is assumed the patient is not using the mobile app, and a non-app user is retrieved or created. To prevent creating a new non-app user every time, a <code>patientExternalId</code> must be provided that is unique to that patient, such as one vended by the clinical system containing the patient record prefixed with an identifier for that clinical system, e.g. &quot;EMISIM1-5005730&quot;.</p>
 
-<p>The recipient user is identified by matching their (verified) mobile number to the <code>recipientMobile</code> request parameter, if provided. If no user already exists with that verified mobile number, a shell user with that mobile number is retrieved or created. If <code>recipientMobile</code> is not provided, a shell user with the value in <code>recipientEmail</code> is retrieved or created.</p>
+<p>The recipient user is identified by matching their (verified) mobile number to the <code>recipientMobile</code> request parameter, if provided. If no user already exists with that verified mobile number, a non-app user with that mobile number is retrieved or created. If <code>recipientMobile</code> is not provided, a non-app user with the value in <code>recipientEmail</code> is retrieved or created.</p>
 
 <p>The resulting recipient user is associated with a newly created message wrapping the file request, and they are notified by mobile (in-app/SMS) and/or email according to the values specified in <code>recipientMobile</code>, <code>recipientEmail</code>, and <code>attemptAppDelivery</code>.</p>
 
-<p>The staff user is identified using their user ID in the patient database (if known), else using their X-on account user ID. If no staff user is found with the provided ID, a new shell user is created.</p>
+<p>The staff user is identified using their user ID in the patient database (if known), else using their X-on account user ID. If no staff user is found with the provided ID, a new non-app user is created.</p>
 <h2 id='get-a-specific-file-request'>Get a Specific File Request</h2>
 <blockquote>
 <p>Example response JSON:</p>
