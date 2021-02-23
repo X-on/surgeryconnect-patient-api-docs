@@ -790,7 +790,7 @@ In our implementation, that detail is the concern of this patient API, not the S
 <td><code>attemptAppDelivery</code></td>
 <td>No</td>
 <td>Boolean</td>
-<td>Indicates whether or not this file request should be sent to the mobile app (if the recipient is using the app).<br><br>When <code>false</code>, the created file request will <strong>not</strong> be associated with an app-using patient user, but a non-app user. This ensures the file request is not received in app, but by SMS and/or email (according to the inclusion of <code>recipientMobile</code> and/or <code>recipientEmail</code>).<br><br>Defaults to <code>true</code>. You might set this to <code>false</code> if you know the recipient is a proxy, and you want to notify them by SMS/email so they respond via a web page, rather than inside the app.</td>
+<td>Indicates whether or not this file request should be sent to the mobile app (if the recipient is using the app).<br><br>When <code>false</code>, the message containing the file request will <strong>not</strong> be sent to an app-using recipient user, but to a non-app user. This ensures the file request is not received in app, but by SMS and/or email (according to the inclusion of <code>recipientMobile</code> and/or <code>recipientEmail</code>).<br><br>Defaults to <code>true</code>. You might set this to <code>false</code> if you know the recipient is a proxy, and you want to notify them by SMS/email so they respond via a web page, rather than inside the app.</td>
 </tr>
 </tbody></table>
 <h3 id='response-body'>Response Body</h3>
