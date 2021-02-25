@@ -329,7 +329,16 @@
             <a href="#calls" class="toc-h1 toc-link" data-title="Calls">Calls</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#get-callable-devices" class="toc-h2 toc-link" data-title="Get Callable Devices">Get Callable Devices</a>
+                  </li>
+                  <li>
                     <a href="#call-a-user-device" class="toc-h2 toc-link" data-title="Call a User Device">Call a User Device</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-call-with-a-device" class="toc-h2 toc-link" data-title="Update a Call With a Device">Update a Call With a Device</a>
+                  </li>
+                  <li>
+                    <a href="#cancel-a-call-with-a-device" class="toc-h2 toc-link" data-title="Cancel a Call With a Device">Cancel a Call With a Device</a>
                   </li>
               </ul>
           </li>
@@ -478,10 +487,10 @@ Development APIs are undocumented and may behave in an incorrect or unexpected w
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Where appropriate, error responses may also include a body describing the error in further detail.</p>
-<h1 id='calls'>Calls</h1><h2 id='call-a-user-device'>Call a User Device</h2>
-<p>Initiates a VoIP call to a patient user.</p>
+<h1 id='calls'>Calls</h1><h2 id='get-callable-devices'>Get Callable Devices</h2>
+<p>For a specified mobile number, returns an array of patient user devices that are able to receive VoIP calls.</p>
 <h3 id='uri'>URI</h3>
-<p><code>POST /v1/calls/{userDeviceId}</code></p>
+<p><code>GET /v1/callable-devices?mobileNumber={mobileNumber}</code></p>
 <h3 id='request-parameters'>Request Parameters</h3>
 <table><thead>
 <tr>
@@ -492,18 +501,60 @@ Development APIs are undocumented and may behave in an incorrect or unexpected w
 </tr>
 </thead><tbody>
 <tr>
-<td><code>userDeviceId</code></td>
+<td><code>mobileNumber</code></td>
 <td>Yes</td>
 <td>String</td>
-<td>The UUID of the user device to call. Specified as a path parameter (see URI above).</td>
+<td>A mobile number in E.164 format. Specified as a path parameter (see URI above).</td>
 </tr>
 </tbody></table>
 <h3 id='response'>Response</h3>
 <blockquote>
+<p>Example JSON for 200 OK response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cbc16ed8-0422-456f-9e15-f269b8a25811"</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7d7e2fdb-416d-4dc8-a545-e42ee157ef03"</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>A successful response will return an array of devices (each containing just the <code>id</code> field). If the specified mobile number is not associated with any active devices that are able to receive VoIP calls, the response will contain an empty array.</p>
+<h2 id='call-a-user-device'>Call a User Device</h2>
+<p>Initiates a VoIP call to a patient user device.</p>
+<h3 id='uri-2'>URI</h3>
+<p><code>POST /v1/call</code></p>
+<h3 id='request-parameters-2'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>deviceId</code></td>
+<td>Yes</td>
+<td>String</td>
+<td>The UUID of the user device to call. This should be a device ID obtained from a request to the <a href="#get-callable-devices">callable-devices</a> endpoint.</td>
+</tr>
+<tr>
+<td><code>callId</code></td>
+<td>Yes</td>
+<td>String</td>
+<td>The call ID, as obtained from a SIP INVITE.</td>
+</tr>
+<tr>
+<td><code>callerName</code></td>
+<td>Yes</td>
+<td>String</td>
+<td>The display name of the caller, as obtained from a SIP INVITE.</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>Response</h3>
+<blockquote>
 <p>Example JSON for 403 Forbidden response:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User has configured device to refuse inbound VoIP calls."</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"device rejected inbound call"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -514,15 +565,15 @@ Development APIs are undocumented and may behave in an incorrect or unexpected w
 </thead><tbody>
 <tr>
 <td>202 Accepted</td>
-<td>A user device was found and a push notification dispatched to initiate a VoIP call. The response body will be empty.</td>
+<td>A callable user device was found and a push notification dispatched to initiate a VoIP call. The response body will be empty.</td>
 </tr>
 <tr>
 <td>403 Forbidden</td>
-<td>A user device was found, but the user has configured it to refuse inbound VoIP calls. The response body will contain an <code>error</code> field with a message describing why the call was forbidden.</td>
+<td>A valid user device was found, but the user has configured it to refuse inbound VoIP calls. The response body will contain an <code>error</code> field with a message describing why the call was forbidden.</td>
 </tr>
 <tr>
 <td>404 Not Found</td>
-<td>The valid user device could not be found, and so cannot be called using VoIP. Note that even if a device exists, it is only considered valid if it has an associated VoIP push token, and if the device user is considered to be an active app user (according to this API). The response body will be empty.</td>
+<td>A valid user device could not be found, and so cannot be called using VoIP. Note that even if a device exists, it is only considered valid if it has an associated VoIP push token, and if the device user is considered to be an active app user (according to this API). The response body will be empty.</td>
 </tr>
 </tbody></table>
 <h3 id='discussion'>Discussion</h3>
@@ -533,14 +584,14 @@ Development APIs are undocumented and may behave in an incorrect or unexpected w
 <blockquote>
 <p>Example SIP REGISTER request made from client app in response to the push notification:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight http tab-http"><code><span class="err">REGISTER sip:+447777123456@x-onsip.net SIP/2.0
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="err">REGISTER sip:+447777123456@sip.x-on.app SIP/2.0
 Via: SIP/2.0/UDP 10.11.228.67:5060;branch=z9hG4bKnashds7
 Max-Forwards: 70
-To: John Smith &lt;sip:+447777123456@x-onsip.net&gt;
-From: John Smith &lt;sip:+447777123456@x-onsip.net&gt;;tag=456248
+To: John Smith &lt;sip:+447777123456@sip.x-on.app&gt;
+From: John Smith &lt;sip:+447777123456@sip.x-on.app&gt;;tag=456248
 Call-ID: 843817637684230@998sdasdh09
 CSeq: 1826 REGISTER
-Contact: &lt;sip:+447777123456@x-onsip.net;
+Contact: &lt;sip:+447777123456@sip.x-on.app;
   pn-provider=xon;
   pn-prid=c1a21fce-8660-4c69-a98d-820a50154f93&gt;
 Expires: 7200
@@ -555,9 +606,9 @@ Content-Length: 0
 <ol>
 <li>Details of the specified user device are fetched and checked to ensure it is configured to accept inbound calls.</li>
 <li>A push notification is dispatched to the device.</li>
-<li>If the push notification is delivered successfully (i.e. the device is switched on with access to the internet, and the app is still installed), the app immediately shows that an inbound call is trying to connect, and registers with the SIP network.</li>
-<li>The SIP proxy should observe the successful SIP registration of the device, and send a SIP invite to the registered SIP URI.</li>
-<li>The device receives the SIP invite and updates its calling UI with the caller ID. At this point, the patient user can accept the call to begin talking.</li>
+<li>If the push notification is delivered successfully (i.e. the device is switched on with access to the internet, and the app is still installed), the app immediately shows that an inbound call is trying to connect, and registers with the SIP proxy.</li>
+<li>The SIP proxy should observe the successful SIP registration of the device, and send a SIP INVITE to the registered SIP URI.</li>
+<li>The device receives the SIP INVITE and updates its calling UI with the caller ID. At this point, the patient user can accept the call to begin talking.</li>
 </ol>
 
 <p>When attempting to call a patient, a VoIP call should be considered to have failed and a PSTN call made instead if any of the following circumstances occur:</p>
@@ -578,7 +629,115 @@ RFC 8599 also specifies a SIP URI parameter for <code>pn-param</code>, which is 
 <br>
 In our implementation, that detail is the concern of this patient API, not the SIP proxy / API consumer. As such, we will not specify this additional parameter, unless mandated through the use of a pre-configured software module conforming to the RFC 8599 spec.
 </aside>
+<h2 id='update-a-call-with-a-device'>Update a Call With a Device</h2>
+<p>Updates a VoIP call with a patient user device.</p>
+<h3 id='uri-3'>URI</h3>
+<p><code>POST /v1/update-call</code></p>
+<h3 id='request-parameters-3'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>deviceId</code></td>
+<td>Yes</td>
+<td>String</td>
+<td>The UUID of the user device to call. This should be a device ID obtained from a request to the <a href="#get-callable-devices">callable-devices</a> endpoint.</td>
+</tr>
+<tr>
+<td><code>callId</code></td>
+<td>Yes</td>
+<td>String</td>
+<td>The call ID, as obtained from a SIP INVITE.</td>
+</tr>
+<tr>
+<td><code>callerName</code></td>
+<td>Yes</td>
+<td>String</td>
+<td>The display name of the caller, as obtained from a SIP INVITE.</td>
+</tr>
+</tbody></table>
+<h3 id='response-3'> Response</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>202 Accepted</td>
+<td>A callable user device was found and a push notification dispatched to update a VoIP call. The response body will be empty.</td>
+</tr>
+<tr>
+<td>404 Not Found</td>
+<td>A valid user device could not be found, and so cannot be called using VoIP. Note that even if a device exists, it is only considered valid if it has an associated push token, and if the device user is considered to be an active app user (according to this API). The response body will be empty.</td>
+</tr>
+</tbody></table>
+<h3 id='discussion-2'>Discussion</h3>
+<p>This endpoint provided to support mid-dialog requests, such as hold, transfer, keep-switch to video, or regular keep-alive messages. It causes a push notification to be sent to the specified device, which responds by registering with the SIP proxy. The proxy listens for this registration, and then forwards the SIP request on to the device.</p>
+<h2 id='cancel-a-call-with-a-device'>Cancel a Call With a Device</h2>
+<p>Cancels a VoIP call to a patient user device.</p>
+<h3 id='uri-4'>URI</h3>
+<p><code>POST /v1/cancel-call</code></p>
+<h3 id='request-parameters-4'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>deviceId</code></td>
+<td>Yes</td>
+<td>String</td>
+<td>The UUID of the user device to call. This should be a device ID obtained from a request to the <a href="#get-callable-devices">callable-devices</a> endpoint.</td>
+</tr>
+<tr>
+<td><code>callId</code></td>
+<td>Yes</td>
+<td>String</td>
+<td>The call ID, as obtained from a SIP INVITE.</td>
+</tr>
+<tr>
+<td><code>reason</code></td>
+<td>Yes</td>
+<td>String</td>
+<td>A code describing the reason the call to this device is cancelled, either <code>cancelled</code> or <code>answered_elsewhere</code>.</td>
+</tr>
+</tbody></table>
+<h3 id='response-4'> Response</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>202 Accepted</td>
+<td>A callable user device was found and a push notification dispatched to cancel a VoIP call. The response body will be empty.</td>
+</tr>
+<tr>
+<td>404 Not Found</td>
+<td>A valid user device could not be found, and so we cannot cancel a VoIP call. Note that even if a device exists, it is only considered valid if it has an associated push token, and if the device user is considered to be an active app user (according to this API). The response body will be empty.</td>
+</tr>
+</tbody></table>
+<h3 id='discussion-3'>Discussion</h3>
+<p>This endpoint should be used to cancel a call initiated with the <a href="#call-a-user-device">call</a> endpoint in the event that the caller hung up before the call was connected, or when another user device accepted the call first.</p>
+
+<p>This push notification mechanism is required since a device may have begun ringing in response to a push notification from the <a href="#call-a-user-device">call</a> endpoint, but not yet registered with the SIP proxy and so would not receive the SIP CANCEL request.</p>
 <h1 id='file-requests'>File Requests</h1><h2 id='create-a-file-request'>Create a File Request</h2>
+<p>Creates a new file request and notifies the patient or a proxy (e.g. carer or paramedic).</p>
+
+<p>A <em>patient</em> is the person that is associated with the resulting file request. A <em>recipient</em> is the person that is notified about file request (the recipient of the <code>message</code> the file request is wrapped in). In most cases the patient and recipient are the same person, but they might be different if a carer, paramedic, guardian, or other proxy needs to respond on behalf of the patient.</p>
+<h3 id='uri'>URI</h3>
+<p><code>POST /v1/file-requests</code></p>
+<h3 id='request-body'>Request Body</h3>
 <blockquote>
 <p>Example request JSON to send file request to patient via mobile app if the patient is an app user, otherwise SMS:</p>
 </blockquote>
@@ -672,28 +831,8 @@ In our implementation, that detail is the concern of this patient API, not the S
 </span></code></pre></div>
 <blockquote>
 <p>In the above example, a recipient user is identified using <code>recipientMobile</code>. They will be notified in the app if they&#39;re an app user, otherwise by SMS. Since <code>recipientIsProxy</code> is <code>true</code>, the message will indicate the file request is relating to a patient in their care.</p>
-
-<p>Example response JSON:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4d47426-c99a-43df-81ea-8304a62c5127"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:32:17.452104+00:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"files"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-  </span><span class="nl">"patientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9d6ad525-90c6-4c03-8f05-63584ee20a29"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"prompt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please take a photo of your rash."</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"shortLinkExpiresAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"shortLinkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a49ekq3j"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"staffId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c46c3407-9c79-498f-a713-07b7d8f1fabf"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"photo"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Creates a new file request and notifies the patient or a proxy (e.g. carer or paramedic).</p>
 
-<p>A <em>patient</em> is the person that is associated with the resulting file request. A <em>recipient</em> is the person that is notified about file request (the recipient of the <code>message</code> the file request is wrapped in). In most cases the patient and recipient are the same person, but they might be different if a carer, paramedic, guardian, or other proxy needs to respond on behalf of the patient.</p>
-<h3 id='uri'>URI</h3>
-<p><code>POST /v1/file-requests</code></p>
-<h3 id='request-body'>Request Body</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -794,6 +933,22 @@ In our implementation, that detail is the concern of this patient API, not the S
 </tr>
 </tbody></table>
 <h3 id='response-body'>Response Body</h3>
+<blockquote>
+<p>Example response JSON:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4d47426-c99a-43df-81ea-8304a62c5127"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:32:17.452104+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"files"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"patientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9d6ad525-90c6-4c03-8f05-63584ee20a29"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"prompt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please take a photo of your rash."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"shortLinkExpiresAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"shortLinkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a49ekq3j"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"staffId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c46c3407-9c79-498f-a713-07b7d8f1fabf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"photo"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p>Contains a <a href="#filerequest">FileRequest</a> JSON Object.</p>
 <h3 id='discussion'>Discussion</h3>
 <p>The patient user is identified by matching their (verified) mobile number, date of birth, and name to the values in this request. If a patient app user already exists where the verified mobile number, DOB, and name don&#39;t conflict, the file request is associated with them. If no patient already exists with that verified mobile number, a new non-app user is created, and the file request is associated with that user.</p>
