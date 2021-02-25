@@ -377,7 +377,10 @@
                     <a href="#file-request-files-updated" class="toc-h2 toc-link" data-title="File Request Files Updated">File Request Files Updated</a>
                   </li>
                   <li>
-                    <a href="#user-caller-details-updated" class="toc-h2 toc-link" data-title="User Caller Details Updated">User Caller Details Updated</a>
+                    <a href="#create-callable-user" class="toc-h2 toc-link" data-title="Create Callable User">Create Callable User</a>
+                  </li>
+                  <li>
+                    <a href="#delete-callable-user" class="toc-h2 toc-link" data-title="Delete Callable User">Delete Callable User</a>
                   </li>
               </ul>
           </li>
@@ -1438,35 +1441,26 @@ While we might offer the ability to dynamically configure webhooks in the future
 <td>An array of UUIDs (Strings) of the files that were removed from the file request.</td>
 </tr>
 </tbody></table>
-<h2 id='user-caller-details-updated'>User Caller Details Updated</h2>
+<h2 id='create-callable-user'>Create Callable User</h2>
+<p>This event is generated whenever a user updates their mobile number, mobile verification status, or devices such that the user is now callable by VoIP on a particular mobile number.</p>
+
+<aside class="notice">
+While we might offer the ability to dynamically configure webhooks in the future, for now events of this type are hardcoded to be sent to the following API webhook:<br>
+<code>https://sc-api.x-onweb.com/api/v2/patient-notifications</code>
+</aside>
+<h3 id='event-body-2'>Event Body</h3>
 <blockquote>
-<p>Sample webhook event JSON for <code>user.caller-details.update</code> event type:</p>
+<p>Sample webhook event JSON for <code>calls.user.create</code> event type:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bcbecf9e-590d-4a18-ba00-f8b0caa3216b"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-14T11:16:47.17502+00:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user.caller-details.update"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9d6ad525-90c6-4c03-8f05-63584ee20a29"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"mobileNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+447777123456"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"isMobileVerified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"oldMobileNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+447111222333"</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calls.user.create"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mobileNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+447777123456"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This event is generated whenever a user updates their name, mobile number, or mobile verification status.</p>
-
-<p>The JSON includes all the new user details, and the user&#39;s old mobile number.</p>
-
-<aside class="notice">
-While we might offer the ability to dynamically configure webhooks in the future, for now events of this type are hardcoded to be sent to the following API webhook:<br>
-<code>https://platform.x-onweb.com/.../patient-notifications</code> (TBC)
-</aside>
-<h3 id='event-body-2'>Event Body</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1487,60 +1481,68 @@ While we might offer the ability to dynamically configure webhooks in the future
 <tr>
 <td><code>event.type</code></td>
 <td>String</td>
-<td>The event type. This value will always be <code>user.caller-details.update</code>.</td>
+<td>The event type. This value will always be <code>calls.user.create</code>.</td>
 </tr>
 <tr>
-<td><code>event.user</code></td>
-<td>Object</td>
-<td>The user whose caller details have been updated. All fields of this object represent the <em>updated</em> user attributes.</td>
-</tr>
-<tr>
-<td><code>event.user.id</code></td>
+<td><code>event.mobileNumber</code></td>
 <td>String</td>
-<td>The ID of the user.</td>
-</tr>
-<tr>
-<td><code>event.user.mobileNumber</code></td>
-<td>String</td>
-<td>The user&#39;s mobile number in E.164 format.</td>
-</tr>
-<tr>
-<td><code>event.user.isMobileVerified</code></td>
-<td>Boolean</td>
-<td>Whether or not the user&#39;s mobile number has been verified via SMS verification.</td>
-</tr>
-<tr>
-<td><code>event.user.firstName</code></td>
-<td>String</td>
-<td>The user&#39;s first name.</td>
-</tr>
-<tr>
-<td><code>event.user.lastName</code></td>
-<td>String</td>
-<td>The user&#39;s last name.</td>
-</tr>
-<tr>
-<td><code>event.oldMobileNumber</code></td>
-<td>String</td>
-<td>The user&#39;s old mobile number (before the update), in E.164 format.</td>
+<td>The callable user&#39;s mobile number in E.164 format.</td>
 </tr>
 </tbody></table>
-<h3 id='discussion-sip-accounts'>Discussion - SIP Accounts</h3>
-<p>This webhook event is provided primarily as a way of communicating with the X-on Platform to allow SIP user accounts &amp; subscriber records to be created for each patient user. Unlike existing business accounts where users and numbers are pre-configured, patient accounts require SIP user accounts to be created dynamically so that a user can register their device to make and receive calls.</p>
+<h3 id='discussion'>Discussion</h3>
+<p>This webhook event is provided as a way of communicating with the X-on Platform that a particular mobile number is now associated with an active patient app user. This allows the platform to maintain a list of callable patient MSISDNs locally, used for fast route selection when it receives a call request to a mobile phone.</p>
 
-<p>In order for the platform to identify SIP UAs using only a patient mobile number, a patient&#39;s SIP username will always be their mobile number in E.164 format. By publishing this event in response the a user updating their mobile number, we can ensure a SIP user account always exists for patient users.</p>
+<p>In order for the platform to identify SIP UAs using only a patient mobile number, a patient&#39;s SIP username will always be their mobile number in E.164 format. The SIP proxy should not require subscriber records to be created in advance, and authentication should not be necessary. Patient SIP UAs will be prompted to register just in time by use of push notifications (see <a href="#calls">Calls</a>).</p>
+<h2 id='delete-callable-user'>Delete Callable User</h2>
+<p>This event is generated whenever a user updates their mobile number, mobile verification status, or devices such that the user is now callable by VoIP on a particular mobile number.</p>
 
-<p>The webhook processing this event should perform the following actions:</p>
-
-<ol>
-<li>Create a SIP user account with <code>event.user.mobileNumber</code> as the username.</li>
-<li>If the mobile number hasn&#39;t changed (<code>event.user.mobileNumber == event.oldMobileNumber</code>), update the existing user account with the user&#39;s name (<code>event.user.{first|last}Name</code>).</li>
-<li>Delete any existing SIP user account with the username <code>event.oldMobileNumber</code>.</li>
-</ol>
-
-<p>Once this has been done, the patient user device will be able to SIP register, associating a device ID with that registration, and allowing the X-on Platform to initiate VoIP calls to the device.</p>
-
-<p>See <a href="#call-a-user-device">Call a User Device</a> for details on makings calls to a patient device.</p>
+<aside class="notice">
+While we might offer the ability to dynamically configure webhooks in the future, for now events of this type are hardcoded to be sent to the following API webhook:<br>
+<code>https://sc-api.x-onweb.com/api/v2/patient-notifications</code>
+</aside>
+<h3 id='event-body-3'>Event Body</h3>
+<blockquote>
+<p>Sample webhook event JSON for <code>calls.user.delete</code> event type:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6ac9365c-b937-4532-aeab-80b88ae2bc4b"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-29T15:34:12.13042+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calls.user.delete"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mobileNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+447777123456"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>event.id</code></td>
+<td>String</td>
+<td>The UUID of the event. This may be used to identify &amp; protect against duplicate events.</td>
+</tr>
+<tr>
+<td><code>event.createdAt</code></td>
+<td>String</td>
+<td>The timestamp when the event was created in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>event.type</code></td>
+<td>String</td>
+<td>The event type. This value will always be <code>calls.user.delete</code>.</td>
+</tr>
+<tr>
+<td><code>event.mobileNumber</code></td>
+<td>String</td>
+<td>The mobile number (in E.164 format) of the user that is no longer callable.</td>
+</tr>
+</tbody></table>
+<h3 id='discussion-2'>Discussion</h3>
+<p>This webhook event is provided as a way of communicating with the X-on Platform that a particular mobile number is no longer associated with an active patient app user. This allows the platform to update its list of callable patient MSISDNs locally, allowing it to bypass an attempt to call the patient over VoIP and use the PSTN instead.</p>
 
       </div>
       <div class="dark-box">
