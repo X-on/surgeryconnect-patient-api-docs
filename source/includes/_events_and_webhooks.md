@@ -79,64 +79,75 @@ Parameter | Type | Description
 `event.removedFileIds` | Array | An array of UUIDs (Strings) of the files that were removed from the file request.
 
 
-## User Caller Details Updated
+## Create Callable User
 
-> Sample webhook event JSON for `user.caller-details.update` event type:
+This event is generated whenever a user updates their mobile number, mobile verification status, or devices such that the user is now callable by VoIP on a particular mobile number.
+
+<aside class="notice">
+While we might offer the ability to dynamically configure webhooks in the future, for now events of this type are hardcoded to be sent to the following API webhook:<br>
+<code>https://sc-api.x-onweb.com/api/v2/patient-notifications</code>
+</aside>
+
+### Event Body
+
+> Sample webhook event JSON for `calls.user.create` event type:
 
 ```json
 {
   "event": {
     "id": "bcbecf9e-590d-4a18-ba00-f8b0caa3216b",
     "createdAt": "2021-01-14T11:16:47.17502+00:00",
-    "type": "user.caller-details.update",
-    "user": {
-      "id": "9d6ad525-90c6-4c03-8f05-63584ee20a29",
-      "mobileNumber": "+447777123456",
-      "isMobileVerified": true,
-      "firstName": "John",
-      "lastName": "Smith"
-    },
-    "oldMobileNumber": "+447111222333"
+    "type": "calls.user.create",
+    "mobileNumber": "+447777123456"
   }
 }
 ```
-
-This event is generated whenever a user updates their name, mobile number, or mobile verification status.
-
-The JSON includes all the new user details, and the user's old mobile number.
-
-<aside class="notice">
-While we might offer the ability to dynamically configure webhooks in the future, for now events of this type are hardcoded to be sent to the following API webhook:<br>
-<code>https://platform.x-onweb.com/.../patient-notifications</code> (TBC)
-</aside>
-
-### Event Body
 
 Parameter | Type | Description
 --------- | ---- | -----------
 `event.id` | String | The UUID of the event. This may be used to identify & protect against duplicate events.
 `event.createdAt` | String | The timestamp when the event was created in ISO 8601 format.
-`event.type` | String | The event type. This value will always be `user.caller-details.update`.
-`event.user` | Object | The user whose caller details have been updated. All fields of this object represent the *updated* user attributes.
-`event.user.id` | String | The ID of the user.
-`event.user.mobileNumber` | String | The user's mobile number in E.164 format.
-`event.user.isMobileVerified` | Boolean | Whether or not the user's mobile number has been verified via SMS verification.
-`event.user.firstName` | String | The user's first name.
-`event.user.lastName` | String | The user's last name.
-`event.oldMobileNumber` | String | The user's old mobile number (before the update), in E.164 format.
+`event.type` | String | The event type. This value will always be `calls.user.create`.
+`event.mobileNumber` | String | The callable user's mobile number in E.164 format.
 
-### Discussion - SIP Accounts
+### Discussion
 
-This webhook event is provided primarily as a way of communicating with the X-on Platform to allow SIP user accounts & subscriber records to be created for each patient user. Unlike existing business accounts where users and numbers are pre-configured, patient accounts require SIP user accounts to be created dynamically so that a user can register their device to make and receive calls.
+This webhook event is provided as a way of communicating with the X-on Platform that a particular mobile number is now associated with an active patient app user. This allows the platform to maintain a list of callable patient MSISDNs locally, used for fast route selection when it receives a call request to a mobile phone.
 
-In order for the platform to identify SIP UAs using only a patient mobile number, a patient's SIP username will always be their mobile number in E.164 format. By publishing this event in response the a user updating their mobile number, we can ensure a SIP user account always exists for patient users.
+In order for the platform to identify SIP UAs using only a patient mobile number, a patient's SIP username will always be their mobile number in E.164 format. The SIP proxy should not require subscriber records to be created in advance, and authentication should not be necessary. Patient SIP UAs will be prompted to register just in time by use of push notifications (see [Calls](#calls)).
 
-The webhook processing this event should perform the following actions:
 
-  1. Create a SIP user account with `event.user.mobileNumber` as the username.
-  2. If the mobile number hasn't changed (`event.user.mobileNumber == event.oldMobileNumber`), update the existing user account with the user's name (`event.user.{first|last}Name`).
-  3. Delete any existing SIP user account with the username `event.oldMobileNumber`.
+## Delete Callable User
 
-Once this has been done, the patient user device will be able to SIP register, associating a device ID with that registration, and allowing the X-on Platform to initiate VoIP calls to the device.
+This event is generated whenever a user updates their mobile number, mobile verification status, or devices such that the user is now callable by VoIP on a particular mobile number.
 
-See [Call a User Device](#call-a-user-device) for details on makings calls to a patient device.
+<aside class="notice">
+While we might offer the ability to dynamically configure webhooks in the future, for now events of this type are hardcoded to be sent to the following API webhook:<br>
+<code>https://sc-api.x-onweb.com/api/v2/patient-notifications</code>
+</aside>
+
+### Event Body
+
+> Sample webhook event JSON for `calls.user.delete` event type:
+
+```json
+{
+  "event": {
+    "id": "6ac9365c-b937-4532-aeab-80b88ae2bc4b",
+    "createdAt": "2021-01-29T15:34:12.13042+00:00",
+    "type": "calls.user.delete",
+    "mobileNumber": "+447777123456"
+  }
+}
+```
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`event.id` | String | The UUID of the event. This may be used to identify & protect against duplicate events.
+`event.createdAt` | String | The timestamp when the event was created in ISO 8601 format.
+`event.type` | String | The event type. This value will always be `calls.user.delete`.
+`event.mobileNumber` | String | The mobile number (in E.164 format) of the user that is no longer callable.
+
+### Discussion
+
+This webhook event is provided as a way of communicating with the X-on Platform that a particular mobile number is no longer associated with an active patient app user. This allows the platform to update its list of callable patient MSISDNs locally, allowing it to bypass an attempt to call the patient over VoIP and use the PSTN instead.
