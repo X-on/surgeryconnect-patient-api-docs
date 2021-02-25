@@ -3,6 +3,16 @@
 
 ## Create a File Request
 
+Creates a new file request and notifies the patient or a proxy (e.g. carer or paramedic).
+
+A *patient* is the person that is associated with the resulting file request. A *recipient* is the person that is notified about file request (the recipient of the `message` the file request is wrapped in). In most cases the patient and recipient are the same person, but they might be different if a carer, paramedic, guardian, or other proxy needs to respond on behalf of the patient.
+
+### URI
+
+`POST /v1/file-requests`
+
+### Request Body
+
 > Example request JSON to send file request to patient via mobile app if the patient is an app user, otherwise SMS:
 
 ```json
@@ -96,33 +106,6 @@
 ```
 > In the above example, a recipient user is identified using `recipientMobile`. They will be notified in the app if they're an app user, otherwise by SMS. Since `recipientIsProxy` is `true`, the message will indicate the file request is relating to a patient in their care.
 
-> Example response JSON:
-
-```json
-{
-  "id": "f4d47426-c99a-43df-81ea-8304a62c5127",
-  "accountId": "12",
-  "createdAt": "2021-01-15T14:32:17.452104+00:00",
-  "files": [],
-  "patientId": "9d6ad525-90c6-4c03-8f05-63584ee20a29",
-  "prompt": "Please take a photo of your rash.",
-  "shortLinkExpiresAt": null,
-  "shortLinkId": "a49ekq3j",
-  "staffId": "c46c3407-9c79-498f-a713-07b7d8f1fabf",
-  "type": "photo"
-}
-```
-
-Creates a new file request and notifies the patient or a proxy (e.g. carer or paramedic).
-
-A *patient* is the person that is associated with the resulting file request. A *recipient* is the person that is notified about file request (the recipient of the `message` the file request is wrapped in). In most cases the patient and recipient are the same person, but they might be different if a carer, paramedic, guardian, or other proxy needs to respond on behalf of the patient.
-
-### URI
-
-`POST /v1/file-requests`
-
-### Request Body
-
 Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------
 `prompt` | No | String | A textual prompt to show to the patient, directing them to upload a particular file.
@@ -142,6 +125,23 @@ Parameter | Required | Type | Description
 `attemptAppDelivery` | No | Boolean | Indicates whether or not this file request should be sent to the mobile app (if the recipient is using the app).<br><br>When `false`, the message containing the file request will **not** be sent to an app-using recipient user, but to a non-app user. This ensures the file request is not received in app, but by SMS and/or email (according to the inclusion of `recipientMobile` and/or `recipientEmail`).<br><br>Defaults to `true`. You might set this to `false` if you know the recipient is a proxy, and you want to notify them by SMS/email so they respond via a web page, rather than inside the app.
 
 ### Response Body
+
+> Example response JSON:
+
+```json
+{
+  "id": "f4d47426-c99a-43df-81ea-8304a62c5127",
+  "accountId": "12",
+  "createdAt": "2021-01-15T14:32:17.452104+00:00",
+  "files": [],
+  "patientId": "9d6ad525-90c6-4c03-8f05-63584ee20a29",
+  "prompt": "Please take a photo of your rash.",
+  "shortLinkExpiresAt": null,
+  "shortLinkId": "a49ekq3j",
+  "staffId": "c46c3407-9c79-498f-a713-07b7d8f1fabf",
+  "type": "photo"
+}
+```
 
 Contains a [FileRequest](#filerequest) JSON Object.
 
