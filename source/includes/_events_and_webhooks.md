@@ -119,7 +119,7 @@ In order for the platform to identify SIP UAs using only a patient mobile number
 
 ## Delete Callable User
 
-This event is generated whenever a user updates their mobile number, mobile verification status, or devices such that the user is now callable by VoIP on a particular mobile number.
+This event is generated whenever a user updates their mobile number, mobile verification status, or devices such that the user is no longer callable by VoIP on a particular mobile number.
 
 <aside class="notice">
 While we might offer the ability to dynamically configure webhooks in the future, for now events of this type are hardcoded to be sent to the following API webhook:<br>
