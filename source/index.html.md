@@ -14,6 +14,8 @@ includes:
   - calls
   - file_requests
   - files
+  - messages
+  - appointments
   - events_and_webhooks
 
 search: true
