@@ -1494,7 +1494,7 @@ While we might offer the ability to dynamically configure webhooks in the future
 
 <p>In order for the platform to identify SIP UAs using only a patient mobile number, a patient&#39;s SIP username will always be their mobile number in E.164 format. The SIP proxy should not require subscriber records to be created in advance, and authentication should not be necessary. Patient SIP UAs will be prompted to register just in time by use of push notifications (see <a href="#calls">Calls</a>).</p>
 <h2 id='delete-callable-user'>Delete Callable User</h2>
-<p>This event is generated whenever a user updates their mobile number, mobile verification status, or devices such that the user is now callable by VoIP on a particular mobile number.</p>
+<p>This event is generated whenever a user updates their mobile number, mobile verification status, or devices such that the user is no longer callable by VoIP on a particular mobile number.</p>
 
 <aside class="notice">
 While we might offer the ability to dynamically configure webhooks in the future, for now events of this type are hardcoded to be sent to the following API webhook:<br>
