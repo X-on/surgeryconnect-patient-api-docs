@@ -134,11 +134,24 @@ Parameter | Required | Type | Description
   "accountId": "12",
   "createdAt": "2021-01-15T14:32:17.452104+00:00",
   "files": [],
-  "patientId": "9d6ad525-90c6-4c03-8f05-63584ee20a29",
+  "patientUser": {
+    "id": "9d6ad525-90c6-4c03-8f05-63584ee20a29",
+    "displayName": null,
+    "firstName": "John",
+    "lastName": "Smith",
+    "profilePictureUrl": "https://surgeryconnect-patients-public.s3.eu-west-2.amazonaws.com/8285e660-f6d9-4e0f-ac03-d62f3f1cc2e0"
+  },
+  "staffUser": {
+    "id": "c46c3407-9c79-498f-a713-07b7d8f1fabf",
+    "displayName": "Dr Rachel Williams",
+    "firstName": null,
+    "lastName": null,
+    "profilePictureUrl": null
+  },
   "prompt": "Please take a photo of your rash.",
+  "expiresAt": null,
   "shortLinkExpiresAt": null,
   "shortLinkId": "a49ekq3j",
-  "staffId": "c46c3407-9c79-498f-a713-07b7d8f1fabf",
   "type": "photo"
 }
 ```
@@ -190,11 +203,24 @@ The staff user is identified using their user ID in the patient database (if kno
       "size": 2738706
     }
   ],
-  "patientId": "9d6ad525-90c6-4c03-8f05-63584ee20a29",
+  "patientUser": {
+    "id": "9d6ad525-90c6-4c03-8f05-63584ee20a29",
+    "displayName": null,
+    "firstName": "John",
+    "lastName": "Smith",
+    "profilePictureUrl": "https://surgeryconnect-patients-public.s3.eu-west-2.amazonaws.com/8285e660-f6d9-4e0f-ac03-d62f3f1cc2e0"
+  },
+  "staffUser": {
+    "id": "c46c3407-9c79-498f-a713-07b7d8f1fabf",
+    "displayName": "Dr Rachel Williams",
+    "firstName": null,
+    "lastName": null,
+    "profilePictureUrl": null
+  },
   "prompt": "Please take a photo of your rash.",
+  "expiresAt": null,
   "shortLinkExpiresAt": null,
   "shortLinkId": "a49ekq3j",
-  "staffId": "c46c3407-9c79-498f-a713-07b7d8f1fabf",
   "type": "photo"
 }
 ```
@@ -218,7 +244,7 @@ Parameter | Required | Type | Description
 Contains a [FileRequest](#filerequest) JSON Object.
 
 
-## JSON Objects
+## File Request JSON Objects
 
 ### FileRequest
 
@@ -237,9 +263,20 @@ Field | Type | Description
 `files[x].mimeType` | String | The MIME type of the file.
 `files[x].originalName` | String | The original name of the file when uploaded.
 `files[x].size` | Integer | The size of the file in bytes.
-`patientId` | String | The UUID of the patient user the file request was sent to.
+`patientUser` | String | The patient user the file request was sent to.
+`patientUser.id` | String | The UUID of the patient user.
+`patientUser.displayName` | String | The display name of the patient. This should be the preferred name to use for the patient, however it can be `null`, in which case `firstName` and `lastName` should be used.
+`patientUser.firstName` | String | The patient's first name. If available, `displayName` should be used instead. This value can be `null`.
+`patientUser.lastName` | String | The patient's last name. If available, `displayName` should be used instead. This value can be `null`.
+`patientUser.profilePictureUrl` | String | The URL to a profile picture for this patient. Can be `null`.
+`staffUser` | String | The staff user the file request was sent from.
+`staffUser.id` | String | The UUID of the staff user the file request was sent from.
+`staffUser.displayName` | String | The display name of the staff member. This should be the preferred name to use for the staff member, however it can be `null`, in which case `firstName` and `lastName` should be used.
+`staffUser.firstName` | String | The staff member's first name. If available, `displayName` should be used instead. This value can be `null`.
+`staffUser.lastName` | String | The staff member's last name. If available, `displayName` should be used instead. This value can be `null`.
+`staffUser.profilePictureUrl` | String | The URL to a profile picture for this staff member. Can be `null`.
 `prompt` | String | A textual prompt to show to the patient, directing them to upload a particular file.
-`shortLinkExpiresAt` | String | The timestamp when access to this file request via the short link URL will expire. After this time, the patient will be unable to respond to this file request.
+`expiresAt` | String | The timestamp when this file request expires. After this time, files can no longer be added to it.
+`shortLinkExpiresAt` | String | The timestamp when access to this file request via the short link URL will expire. After this time, the patient will be unable to respond to this file request using a web browser, though an authenticated patient app user might still be able to respond as long as `expiresAt` is `null` or in the future.
 `shortLinkId` | String | An ID that can be used to form a public URL to the file request. This allows an unauthenticated user to access a webpage through which they can view/respond to the file request.
-`staffId` | String | The UUID of the staff user the file request was sent from.
 `type` | String | Determines what file type/size restrictions should be used when validating user-selected files.

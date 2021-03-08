@@ -105,7 +105,7 @@ Parameter | Required | Type | Description
 
 A file stream for downloading the specified file data.
 
-## JSON Objects
+## File JSON Objects
 
 ### File
 

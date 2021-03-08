@@ -42,11 +42,24 @@ Events are sent via an HTTP `POST` request with a JSON request body. The request
           "size": 2738706
         }
       ],
-      "patientId": "9d6ad525-90c6-4c03-8f05-63584ee20a29",
+      "patientUser": {
+        "id": "9d6ad525-90c6-4c03-8f05-63584ee20a29",
+        "displayName": null,
+        "firstName": "John",
+        "lastName": "Smith",
+        "profilePictureUrl": "https://surgeryconnect-patients-public.s3.eu-west-2.amazonaws.com/8285e660-f6d9-4e0f-ac03-d62f3f1cc2e0"
+      },
+      "staffUser": {
+        "id": "c46c3407-9c79-498f-a713-07b7d8f1fabf",
+        "displayName": "Dr Rachel Williams",
+        "firstName": null,
+        "lastName": null,
+        "profilePictureUrl": null
+      },
       "prompt": "Please take a photo of your rash.",
+      "expiresAt": null,
       "shortLinkExpiresAt": null,
       "shortLinkId": "a49ekq3j",
-      "staffId": "c46c3407-9c79-498f-a713-07b7d8f1fabf",
       "type": "photo"
     },
     "addedFileIds": [
