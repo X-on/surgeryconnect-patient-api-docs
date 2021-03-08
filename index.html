@@ -352,7 +352,7 @@
                     <a href="#get-a-specific-file-request" class="toc-h2 toc-link" data-title="Get a Specific File Request">Get a Specific File Request</a>
                   </li>
                   <li>
-                    <a href="#json-objects" class="toc-h2 toc-link" data-title="JSON Objects">JSON Objects</a>
+                    <a href="#file-request-json-objects" class="toc-h2 toc-link" data-title="File Request JSON Objects">File Request JSON Objects</a>
                   </li>
               </ul>
           </li>
@@ -366,7 +366,7 @@
                     <a href="#download-a-specific-file" class="toc-h2 toc-link" data-title="Download a Specific File">Download a Specific File</a>
                   </li>
                   <li>
-                    <a href="#json-objects" class="toc-h2 toc-link" data-title="JSON Objects">JSON Objects</a>
+                    <a href="#file-json-objects" class="toc-h2 toc-link" data-title="File JSON Objects">File JSON Objects</a>
                   </li>
               </ul>
           </li>
@@ -979,11 +979,24 @@ In our implementation, that detail is the concern of this patient API, not the S
   </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15T14:32:17.452104+00:00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"files"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-  </span><span class="nl">"patientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9d6ad525-90c6-4c03-8f05-63584ee20a29"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"patientUser"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9d6ad525-90c6-4c03-8f05-63584ee20a29"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"profilePictureUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://surgeryconnect-patients-public.s3.eu-west-2.amazonaws.com/8285e660-f6d9-4e0f-ac03-d62f3f1cc2e0"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"staffUser"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c46c3407-9c79-498f-a713-07b7d8f1fabf"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dr Rachel Williams"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"profilePictureUrl"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="nl">"prompt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please take a photo of your rash."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expiresAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"shortLinkExpiresAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"shortLinkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a49ekq3j"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"staffId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c46c3407-9c79-498f-a713-07b7d8f1fabf"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"photo"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -1030,11 +1043,24 @@ In our implementation, that detail is the concern of this patient API, not the S
       </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2738706</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"patientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9d6ad525-90c6-4c03-8f05-63584ee20a29"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"patientUser"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9d6ad525-90c6-4c03-8f05-63584ee20a29"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"profilePictureUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://surgeryconnect-patients-public.s3.eu-west-2.amazonaws.com/8285e660-f6d9-4e0f-ac03-d62f3f1cc2e0"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"staffUser"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c46c3407-9c79-498f-a713-07b7d8f1fabf"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dr Rachel Williams"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"profilePictureUrl"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="nl">"prompt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please take a photo of your rash."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expiresAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"shortLinkExpiresAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"shortLinkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a49ekq3j"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"staffId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c46c3407-9c79-498f-a713-07b7d8f1fabf"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"photo"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -1061,7 +1087,7 @@ In our implementation, that detail is the concern of this patient API, not the S
 </tbody></table>
 <h3 id='response-body-2'>Response Body</h3>
 <p>Contains a <a href="#filerequest">FileRequest</a> JSON Object.</p>
-<h2 id='json-objects'>JSON Objects</h2><h3 id='filerequest'>FileRequest</h3>
+<h2 id='file-request-json-objects'>File Request JSON Objects</h2><h3 id='filerequest'>FileRequest</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -1135,9 +1161,64 @@ In our implementation, that detail is the concern of this patient API, not the S
 <td>The size of the file in bytes.</td>
 </tr>
 <tr>
-<td><code>patientId</code></td>
+<td><code>patientUser</code></td>
 <td>String</td>
-<td>The UUID of the patient user the file request was sent to.</td>
+<td>The patient user the file request was sent to.</td>
+</tr>
+<tr>
+<td><code>patientUser.id</code></td>
+<td>String</td>
+<td>The UUID of the patient user.</td>
+</tr>
+<tr>
+<td><code>patientUser.displayName</code></td>
+<td>String</td>
+<td>The display name of the patient. This should be the preferred name to use for the patient, however it can be <code>null</code>, in which case <code>firstName</code> and <code>lastName</code> should be used.</td>
+</tr>
+<tr>
+<td><code>patientUser.firstName</code></td>
+<td>String</td>
+<td>The patient&#39;s first name. If available, <code>displayName</code> should be used instead. This value can be <code>null</code>.</td>
+</tr>
+<tr>
+<td><code>patientUser.lastName</code></td>
+<td>String</td>
+<td>The patient&#39;s last name. If available, <code>displayName</code> should be used instead. This value can be <code>null</code>.</td>
+</tr>
+<tr>
+<td><code>patientUser.profilePictureUrl</code></td>
+<td>String</td>
+<td>The URL to a profile picture for this patient. Can be <code>null</code>.</td>
+</tr>
+<tr>
+<td><code>staffUser</code></td>
+<td>String</td>
+<td>The staff user the file request was sent from.</td>
+</tr>
+<tr>
+<td><code>staffUser.id</code></td>
+<td>String</td>
+<td>The UUID of the staff user the file request was sent from.</td>
+</tr>
+<tr>
+<td><code>staffUser.displayName</code></td>
+<td>String</td>
+<td>The display name of the staff member. This should be the preferred name to use for the staff member, however it can be <code>null</code>, in which case <code>firstName</code> and <code>lastName</code> should be used.</td>
+</tr>
+<tr>
+<td><code>staffUser.firstName</code></td>
+<td>String</td>
+<td>The staff member&#39;s first name. If available, <code>displayName</code> should be used instead. This value can be <code>null</code>.</td>
+</tr>
+<tr>
+<td><code>staffUser.lastName</code></td>
+<td>String</td>
+<td>The staff member&#39;s last name. If available, <code>displayName</code> should be used instead. This value can be <code>null</code>.</td>
+</tr>
+<tr>
+<td><code>staffUser.profilePictureUrl</code></td>
+<td>String</td>
+<td>The URL to a profile picture for this staff member. Can be <code>null</code>.</td>
 </tr>
 <tr>
 <td><code>prompt</code></td>
@@ -1145,19 +1226,19 @@ In our implementation, that detail is the concern of this patient API, not the S
 <td>A textual prompt to show to the patient, directing them to upload a particular file.</td>
 </tr>
 <tr>
+<td><code>expiresAt</code></td>
+<td>String</td>
+<td>The timestamp when this file request expires. After this time, files can no longer be added to it.</td>
+</tr>
+<tr>
 <td><code>shortLinkExpiresAt</code></td>
 <td>String</td>
-<td>The timestamp when access to this file request via the short link URL will expire. After this time, the patient will be unable to respond to this file request.</td>
+<td>The timestamp when access to this file request via the short link URL will expire. After this time, the patient will be unable to respond to this file request using a web browser, though an authenticated patient app user might still be able to respond as long as <code>expiresAt</code> is <code>null</code> or in the future.</td>
 </tr>
 <tr>
 <td><code>shortLinkId</code></td>
 <td>String</td>
 <td>An ID that can be used to form a public URL to the file request. This allows an unauthenticated user to access a webpage through which they can view/respond to the file request.</td>
-</tr>
-<tr>
-<td><code>staffId</code></td>
-<td>String</td>
-<td>The UUID of the staff user the file request was sent from.</td>
 </tr>
 <tr>
 <td><code>type</code></td>
@@ -1314,7 +1395,7 @@ In our implementation, that detail is the concern of this patient API, not the S
 </tbody></table>
 <h3 id='response'>Response</h3>
 <p>A file stream for downloading the specified file data.</p>
-<h2 id='json-objects'>JSON Objects</h2><h3 id='file'>File</h3>
+<h2 id='file-json-objects'>File JSON Objects</h2><h3 id='file'>File</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -1418,11 +1499,24 @@ In our implementation, that detail is the concern of this patient API, not the S
           </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2738706</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"patientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9d6ad525-90c6-4c03-8f05-63584ee20a29"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"patientUser"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9d6ad525-90c6-4c03-8f05-63584ee20a29"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"profilePictureUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://surgeryconnect-patients-public.s3.eu-west-2.amazonaws.com/8285e660-f6d9-4e0f-ac03-d62f3f1cc2e0"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"staffUser"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c46c3407-9c79-498f-a713-07b7d8f1fabf"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dr Rachel Williams"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"profilePictureUrl"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="nl">"prompt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please take a photo of your rash."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"expiresAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"shortLinkExpiresAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"shortLinkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a49ekq3j"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"staffId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c46c3407-9c79-498f-a713-07b7d8f1fabf"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"photo"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"addedFileIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
