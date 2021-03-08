@@ -38,6 +38,16 @@ Initiates a VoIP call to a patient user device.
 
 ### Request Parameters
 
+> Example request JSON:
+
+```json
+{
+  "deviceId": "cbc16ed8-0422-456f-9e15-f269b8a25811",
+  "callId": "fV6rk068jI1LyM7kEFoNsEk",
+  "callerName": "John Smith"
+}
+```
+
 Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------
 `deviceId` | Yes | String | The UUID of the user device to call. This should be a device ID obtained from a request to the [callable-devices](#get-callable-devices) endpoint.
@@ -121,6 +131,16 @@ Updates a VoIP call with a patient user device.
 
 ### Request Parameters
 
+> Example request JSON:
+
+```json
+{
+  "deviceId": "cbc16ed8-0422-456f-9e15-f269b8a25811",
+  "callId": "fV6rk068jI1LyM7kEFoNsEk",
+  "callerName": "John Smith"
+}
+```
+
 Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------
 `deviceId` | Yes | String | The UUID of the user device to call. This should be a device ID obtained from a request to the [callable-devices](#get-callable-devices) endpoint.
@@ -148,6 +168,16 @@ Cancels a VoIP call to a patient user device.
 `POST /v1/cancel-call`
 
 ### Request Parameters
+
+> Example request JSON:
+
+```json
+{
+  "deviceId": "cbc16ed8-0422-456f-9e15-f269b8a25811",
+  "callId": "fV6rk068jI1LyM7kEFoNsEk",
+  "reason": "answered_elsewhere"
+}
+```
 
 Parameter | Required | Type | Description
 --------- | -------- | ---- | -----------

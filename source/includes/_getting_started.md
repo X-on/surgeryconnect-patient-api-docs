@@ -27,6 +27,8 @@ Unless otherwise specified, all request URIs should be appended to the following
 
 `https://api.x-on.app`
 
+Request parameters are expected to be sent as JSON in the request body, unless otherwise specified.
+
 ### Staging Environment
 
 For staging APIs, use the following base URL:
