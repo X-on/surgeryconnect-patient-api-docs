@@ -435,6 +435,8 @@ Replace <code>MyApiKey</code> with your API key.
 <p>Unless otherwise specified, all request URIs should be appended to the following base URL, which uses the production environment:</p>
 
 <p><code>https://api.x-on.app</code></p>
+
+<p>Request parameters are expected to be sent as JSON in the request body, unless otherwise specified.</p>
 <h3 id='staging-environment'>Staging Environment</h3>
 <p>For staging APIs, use the following base URL:</p>
 
@@ -531,6 +533,15 @@ Development APIs are undocumented and may behave in an incorrect or unexpected w
 <h3 id='uri-2'>URI</h3>
 <p><code>POST /v1/call</code></p>
 <h3 id='request-parameters-2'>Request Parameters</h3>
+<blockquote>
+<p>Example request JSON:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cbc16ed8-0422-456f-9e15-f269b8a25811"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"callId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fV6rk068jI1LyM7kEFoNsEk"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"callerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Smith"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -643,6 +654,15 @@ In our implementation, that detail is the concern of this patient API, not the S
 <h3 id='uri-3'>URI</h3>
 <p><code>POST /v1/update-call</code></p>
 <h3 id='request-parameters-3'>Request Parameters</h3>
+<blockquote>
+<p>Example request JSON:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cbc16ed8-0422-456f-9e15-f269b8a25811"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"callId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fV6rk068jI1LyM7kEFoNsEk"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"callerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Smith"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -693,6 +713,15 @@ In our implementation, that detail is the concern of this patient API, not the S
 <h3 id='uri-4'>URI</h3>
 <p><code>POST /v1/cancel-call</code></p>
 <h3 id='request-parameters-4'>Request Parameters</h3>
+<blockquote>
+<p>Example request JSON:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cbc16ed8-0422-456f-9e15-f269b8a25811"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"callId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fV6rk068jI1LyM7kEFoNsEk"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"answered_elsewhere"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <table><thead>
 <tr>
 <th>Parameter</th>
