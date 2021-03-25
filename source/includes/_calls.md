@@ -197,3 +197,49 @@ Code | Description
 This endpoint should be used to cancel a call initiated with the [call](#call-a-user-device) endpoint in the event that the caller hung up before the call was connected, or when another user device accepted the call first.
 
 This push notification mechanism is required since a device may have begun ringing in response to a push notification from the [call](#call-a-user-device) endpoint, but not yet registered with the SIP proxy and so would not receive the SIP CANCEL request.
+
+
+## Get Whitelisted Call Destinations
+
+Returns a whitelisted call destination number for a specified phone number.
+
+### URI
+
+`GET /v1/whitelisted-call-destination?phoneNumber={phoneNumber}`
+
+### Request Parameters
+
+Parameter | Required | Type | Description
+--------- | -------- | ---- | -----------
+`phoneNumber` | Yes | String | A phone number in E.164 format. Specified as a path parameter (see URI above).
+
+### Response
+
+> Example JSON for 200 OK response:
+
+```json
+{
+  "phoneNumber": "+441394615500"
+}
+```
+
+> Example JSON for 404 Not Found response where no call destination exists for the specified `phoneNumber`:
+
+```json
+{
+  "error": "call destination not found"
+}
+```
+
+> Example JSON for 404 Not Found response where a call destination exists for the specified `phoneNumber`, but it is configured to disallow patient app calls:
+
+```json
+{
+  "error": "call destination exists but disallows inbound patient app calls"
+}
+```
+
+Code | Description
+---- | -----------
+200 OK | A whitelisted call destination was found for the specified number. The response body will contain the phone number sent in the request.
+404 Not Found | No whitelisted call destination was found for the specified number. The response body will contain an error describing the issue.
