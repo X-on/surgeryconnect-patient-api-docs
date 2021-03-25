@@ -340,6 +340,9 @@
                   <li>
                     <a href="#cancel-a-call-with-a-device" class="toc-h2 toc-link" data-title="Cancel a Call With a Device">Cancel a Call With a Device</a>
                   </li>
+                  <li>
+                    <a href="#get-whitelisted-call-destinations" class="toc-h2 toc-link" data-title="Get Whitelisted Call Destinations">Get Whitelisted Call Destinations</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -769,6 +772,63 @@ In our implementation, that detail is the concern of this patient API, not the S
 <p>This endpoint should be used to cancel a call initiated with the <a href="#call-a-user-device">call</a> endpoint in the event that the caller hung up before the call was connected, or when another user device accepted the call first.</p>
 
 <p>This push notification mechanism is required since a device may have begun ringing in response to a push notification from the <a href="#call-a-user-device">call</a> endpoint, but not yet registered with the SIP proxy and so would not receive the SIP CANCEL request.</p>
+<h2 id='get-whitelisted-call-destinations'>Get Whitelisted Call Destinations</h2>
+<p>Returns a whitelisted call destination number for a specified phone number.</p>
+<h3 id='uri-5'>URI</h3>
+<p><code>GET /v1/whitelisted-call-destination?phoneNumber={phoneNumber}</code></p>
+<h3 id='request-parameters-5'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>phoneNumber</code></td>
+<td>Yes</td>
+<td>String</td>
+<td>A phone number in E.164 format. Specified as a path parameter (see URI above).</td>
+</tr>
+</tbody></table>
+<h3 id='response-5'>Response</h3>
+<blockquote>
+<p>Example JSON for 200 OK response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+441394615500"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Example JSON for 404 Not Found response where no call destination exists for the specified <code>phoneNumber</code>:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"call destination not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Example JSON for 404 Not Found response where a call destination exists for the specified <code>phoneNumber</code>, but it is configured to disallow patient app calls:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"call destination exists but disallows inbound patient app calls"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200 OK</td>
+<td>A whitelisted call destination was found for the specified number. The response body will contain the phone number sent in the request.</td>
+</tr>
+<tr>
+<td>404 Not Found</td>
+<td>No whitelisted call destination was found for the specified number. The response body will contain an error describing the issue.</td>
+</tr>
+</tbody></table>
 <h1 id='file-requests'>File Requests</h1><h2 id='create-a-file-request'>Create a File Request</h2>
 <p>Creates a new file request and notifies the patient or a proxy (e.g. carer or paramedic).</p>
 
