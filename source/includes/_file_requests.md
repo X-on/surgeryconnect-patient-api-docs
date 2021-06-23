@@ -189,6 +189,7 @@ The staff user is identified using their user ID in the patient database (if kno
       "imageWidth": 3024,
       "mimeType": "image/jpeg",
       "originalName": "IMG_0292.JPG",
+      "photoCreatedAt": "2021-01-12T10:30:12.153234+00:00",
       "size": 2904221
     },
     {
@@ -200,6 +201,7 @@ The staff user is identified using their user ID in the patient database (if kno
       "imageWidth": 3024,
       "mimeType": "image/jpeg",
       "originalName": "IMG_0293.JPG",
+      "photoCreatedAt": "2021-01-12T10:30:13.342424+00:00",
       "size": 2738706
     }
   ],
@@ -262,6 +264,7 @@ Field | Type | Description
 `files[x].imageWidth` | Integer | The width of the image file. This is `null` if the file is not an image, or if the dimensions could not otherwise be obtained.
 `files[x].mimeType` | String | The MIME type of the file.
 `files[x].originalName` | String | The original name of the file when uploaded.
+`files[x].photoCreatedAt` | String | The timestamp when this photo was originally taken (if this file is an image).
 `files[x].size` | Integer | The size of the file in bytes.
 `patientUser` | String | The patient user the file request was sent to.
 `patientUser.id` | String | The UUID of the patient user.

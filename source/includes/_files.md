@@ -41,6 +41,7 @@
     "imageWidth": 3024,
     "mimeType": "image/jpeg",
     "originalName": "IMG_0292.JPG",
+    "photoCreatedAt": "2021-01-12T10:30:12.153234+00:00",
     "size": 2904221
   },
   {
@@ -53,6 +54,7 @@
     "imageWidth": 3024,
     "mimeType": "image/jpeg",
     "originalName": "IMG_0293.JPG",
+    "photoCreatedAt": "2021-01-12T10:30:13.342424+00:00",
     "size": 2738706
   }
 ]
@@ -120,4 +122,5 @@ Field | Type | Description
 `imageWidth` | Integer | The width of the image file. This is `null` if the file is not an image, or if the dimensions could not otherwise be obtained.
 `mimeType` | String | The MIME type of the file.
 `originalName` | String | The original name of the file when uploaded.
+`photoCreatedAt` | String | The timestamp when this photo was originally taken (if this file is an image).
 `size` | Integer | The size of the file in bytes.

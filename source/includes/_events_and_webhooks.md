@@ -28,6 +28,7 @@ Events are sent via an HTTP `POST` request with a JSON request body. The request
           "imageWidth": 3024,
           "mimeType": "image/jpeg",
           "originalName": "IMG_0292.JPG",
+          "photoCreatedAt": "2021-01-12T10:30:12.153234+00:00",
           "size": 2904221
         },
         {
@@ -39,6 +40,7 @@ Events are sent via an HTTP `POST` request with a JSON request body. The request
           "imageWidth": 3024,
           "mimeType": "image/jpeg",
           "originalName": "IMG_0293.JPG",
+          "photoCreatedAt": "2021-01-12T10:30:13.342424+00:00",
           "size": 2738706
         }
       ],
