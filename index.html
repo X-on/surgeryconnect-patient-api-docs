@@ -1089,6 +1089,7 @@ In our implementation, that detail is the concern of this patient API, not the S
       </span><span class="nl">"imageWidth"</span><span class="p">:</span><span class="w"> </span><span class="mi">3024</span><span class="p">,</span><span class="w">
       </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"originalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0292.JPG"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"photoCreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-12T10:30:12.153234+00:00"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2904221</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -1100,6 +1101,7 @@ In our implementation, that detail is the concern of this patient API, not the S
       </span><span class="nl">"imageWidth"</span><span class="p">:</span><span class="w"> </span><span class="mi">3024</span><span class="p">,</span><span class="w">
       </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"originalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0293.JPG"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"photoCreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-12T10:30:13.342424+00:00"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2738706</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -1214,6 +1216,11 @@ In our implementation, that detail is the concern of this patient API, not the S
 <td><code>files[x].originalName</code></td>
 <td>String</td>
 <td>The original name of the file when uploaded.</td>
+</tr>
+<tr>
+<td><code>files[x].photoCreatedAt</code></td>
+<td>String</td>
+<td>The timestamp when this photo was originally taken (if this file is an image).</td>
 </tr>
 <tr>
 <td><code>files[x].size</code></td>
@@ -1344,6 +1351,7 @@ In our implementation, that detail is the concern of this patient API, not the S
     </span><span class="nl">"imageWidth"</span><span class="p">:</span><span class="w"> </span><span class="mi">3024</span><span class="p">,</span><span class="w">
     </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"originalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0292.JPG"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"photoCreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-12T10:30:12.153234+00:00"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2904221</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
@@ -1356,6 +1364,7 @@ In our implementation, that detail is the concern of this patient API, not the S
     </span><span class="nl">"imageWidth"</span><span class="p">:</span><span class="w"> </span><span class="mi">3024</span><span class="p">,</span><span class="w">
     </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"originalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0293.JPG"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"photoCreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-12T10:30:13.342424+00:00"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2738706</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
@@ -1509,6 +1518,11 @@ In our implementation, that detail is the concern of this patient API, not the S
 <td>The original name of the file when uploaded.</td>
 </tr>
 <tr>
+<td><code>photoCreatedAt</code></td>
+<td>String</td>
+<td>The timestamp when this photo was originally taken (if this file is an image).</td>
+</tr>
+<tr>
 <td><code>size</code></td>
 <td>Integer</td>
 <td>The size of the file in bytes.</td>
@@ -1545,6 +1559,7 @@ In our implementation, that detail is the concern of this patient API, not the S
           </span><span class="nl">"imageWidth"</span><span class="p">:</span><span class="w"> </span><span class="mi">3024</span><span class="p">,</span><span class="w">
           </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"originalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0292.JPG"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"photoCreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-12T10:30:12.153234+00:00"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2904221</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
@@ -1556,6 +1571,7 @@ In our implementation, that detail is the concern of this patient API, not the S
           </span><span class="nl">"imageWidth"</span><span class="p">:</span><span class="w"> </span><span class="mi">3024</span><span class="p">,</span><span class="w">
           </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"originalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMG_0293.JPG"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"photoCreatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-12T10:30:13.342424+00:00"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2738706</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
