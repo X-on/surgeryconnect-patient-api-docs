@@ -33,7 +33,7 @@ Request parameters are expected to be sent as JSON in the request body, unless o
 
 For staging APIs, use the following base URL:
 
-`https://staging.api.x-on.app`
+`https://staging-api.x-on.app`
 
 Staging APIs are considered complete and ready for testing. They should behave according to the API documentation, and should be used to test integrations before coordinating a deployment to the production environment.
 
@@ -41,7 +41,7 @@ Staging APIs are considered complete and ready for testing. They should behave a
 
 For development APIs, use with the following base URL:
 
-`https://dev.api.x-on.app`
+`https://dev-api.x-on.app`
 
 <aside class="warning">
 Development APIs are undocumented and may behave in an incorrect or unexpected way. Only use these APIs in close consultation with the API author.
