@@ -890,7 +890,7 @@ In our implementation, that detail is the concern of this patient API, not the S
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>In the above example, the patient user is identified/created using <code>patientExternalIdentifier</code> since <code>patientMobile</code> is not provided. As with the previous example, a non-app recipient will be identified and notified of the file request by email.</p>
+<p>In the above example, the patient user is identified/created using <code>patientExternalId</code> since <code>patientMobile</code> is not provided. As with the previous example, a non-app recipient will be identified and notified of the file request by email.</p>
 
 <p>Example request JSON to send file request via SMS (NOT to mobile app):</p>
 </blockquote>
@@ -1029,6 +1029,12 @@ In our implementation, that detail is the concern of this patient API, not the S
 <td>Boolean</td>
 <td>Indicates whether or not this file request should be sent to the mobile app (if the recipient is using the app).<br><br>When <code>false</code>, the message containing the file request will <strong>not</strong> be sent to an app-using recipient user, but to a non-app user. This ensures the file request is not received in app, but by SMS and/or email (according to the inclusion of <code>recipientMobile</code> and/or <code>recipientEmail</code>).<br><br>Defaults to <code>true</code>. You might set this to <code>false</code> if you know the recipient is a proxy, and you want to notify them by SMS/email so they respond via a web page, rather than inside the app.</td>
 </tr>
+<tr>
+<td><code>filesUpdateWebhookUrl</code></td>
+<td>No</td>
+<td>String</td>
+<td>The URL of the webhook where <code>file-request.files.update</code> events should be sent. If not specified, these events will be send to <code>https://sc-api.x-onweb.com/api/v2/patient-notifications</code> by default.</td>
+</tr>
 </tbody></table>
 <h3 id='response-body'>Response Body</h3>
 <blockquote>
@@ -1057,7 +1063,8 @@ In our implementation, that detail is the concern of this patient API, not the S
   </span><span class="nl">"expiresAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"shortLinkExpiresAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"shortLinkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a49ekq3j"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"photo"</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"photo"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"filesUpdateWebhookUrl"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Contains a <a href="#filerequest">FileRequest</a> JSON Object.</p>
@@ -1123,7 +1130,8 @@ In our implementation, that detail is the concern of this patient API, not the S
   </span><span class="nl">"expiresAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"shortLinkExpiresAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"shortLinkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a49ekq3j"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"photo"</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"photo"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"filesUpdateWebhookUrl"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Fetches an existing file request.</p>
@@ -1311,6 +1319,11 @@ In our implementation, that detail is the concern of this patient API, not the S
 <td><code>type</code></td>
 <td>String</td>
 <td>Determines what file type/size restrictions should be used when validating user-selected files.</td>
+</tr>
+<tr>
+<td><code>filesUpdateWebhookUrl</code></td>
+<td>String</td>
+<td>The URL of the webhook where <code>file-request.files.update</code> events will be sent. If null, these events will be send to <code>https://sc-api.x-onweb.com/api/v2/patient-notifications</code> by default.</td>
 </tr>
 </tbody></table>
 <h1 id='files'>Files</h1><h2 id='upload-files'>Upload Files</h2>
@@ -1593,7 +1606,8 @@ In our implementation, that detail is the concern of this patient API, not the S
       </span><span class="nl">"expiresAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"shortLinkExpiresAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"shortLinkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a49ekq3j"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"photo"</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"photo"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"filesUpdateWebhookUrl"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"addedFileIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"7fecfb58-bfd6-462e-9e6e-f9ede76c7c95"</span><span class="p">,</span><span class="w">
@@ -1608,7 +1622,7 @@ In our implementation, that detail is the concern of this patient API, not the S
 <p>The JSON includes the FileRequest whose files changed, and arrays of IDs for the files that were added and removed.</p>
 
 <aside class="notice">
-While we might offer the ability to dynamically configure webhooks in the future, for now events of this type are hardcoded to be sent to the following API webhook:<br>
+If the field `filesUpdateWebhookUrl` was specified when creating the file request, that URL is used as the webhook URL for this event. Otherwise, events of this type are hardcoded to be sent to the following API webhook:<br>
 <code>https://sc-api.x-onweb.com/api/v2/patient-notifications</code>
 </aside>
 <h3 id='event-body'>Event Body</h3>
