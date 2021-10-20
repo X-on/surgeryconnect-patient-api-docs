@@ -62,7 +62,8 @@ Events are sent via an HTTP `POST` request with a JSON request body. The request
       "expiresAt": null,
       "shortLinkExpiresAt": null,
       "shortLinkId": "a49ekq3j",
-      "type": "photo"
+      "type": "photo",
+      "filesUpdateWebhookUrl": null
     },
     "addedFileIds": [
       "7fecfb58-bfd6-462e-9e6e-f9ede76c7c95",
@@ -78,7 +79,7 @@ This event is generated whenever the files associated with a particular file req
 The JSON includes the FileRequest whose files changed, and arrays of IDs for the files that were added and removed.
 
 <aside class="notice">
-While we might offer the ability to dynamically configure webhooks in the future, for now events of this type are hardcoded to be sent to the following API webhook:<br>
+If the field `filesUpdateWebhookUrl` was specified when creating the file request, that URL is used as the webhook URL for this event. Otherwise, events of this type are hardcoded to be sent to the following API webhook:<br>
 <code>https://sc-api.x-onweb.com/api/v2/patient-notifications</code>
 </aside>
 

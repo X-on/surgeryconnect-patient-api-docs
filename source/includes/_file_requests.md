@@ -66,7 +66,7 @@ A *patient* is the person that is associated with the resulting file request. A 
   "recipientEmail": "johnsmith@example.com"
 }
 ```
-> In the above example, the patient user is identified/created using `patientExternalIdentifier` since `patientMobile` is not provided. As with the previous example, a non-app recipient will be identified and notified of the file request by email.
+> In the above example, the patient user is identified/created using `patientExternalId` since `patientMobile` is not provided. As with the previous example, a non-app recipient will be identified and notified of the file request by email.
 
 > Example request JSON to send file request via SMS (NOT to mobile app):
 
@@ -123,6 +123,7 @@ Parameter | Required | Type | Description
 `recipientEmail` | No | String | Email address of the recipient. Used to identify the user who should be notified of this file request. In most cases this will be the patient user, but it could also be a proxy (e.g. carer or paramedic).<br><br>When `recipientEmail` is provided, the recipient will be notified of the file request by email.<br><br>If `recipientEmail` is not provided, then `recipientMobile` will be required.<br><br>N.B. This parameter does **not** affect in-app/SMS delivery. If `recipientMobile` matches an app-using patient and `attemptAppDelivery` is `true`, the file request will be delivered to the mobile app, regardless of this parameter. Similarly if both `recipientMobile` and `recipientEmail` are provided, the patient will be notified on their mobile (in-app/SMS) **and** email.
 `recipientIsProxy` | No | Boolean | Indicates whether this request is being sent to a proxy (e.g. carer or paramedic) rather than the patient themselves.<br><br>When `true`, the message about the file request may contain additional copy indicating that the file request pertains to a patient in their care.<br><br>Defaults to `false`.
 `attemptAppDelivery` | No | Boolean | Indicates whether or not this file request should be sent to the mobile app (if the recipient is using the app).<br><br>When `false`, the message containing the file request will **not** be sent to an app-using recipient user, but to a non-app user. This ensures the file request is not received in app, but by SMS and/or email (according to the inclusion of `recipientMobile` and/or `recipientEmail`).<br><br>Defaults to `true`. You might set this to `false` if you know the recipient is a proxy, and you want to notify them by SMS/email so they respond via a web page, rather than inside the app.
+`filesUpdateWebhookUrl` | No | String | The URL of the webhook where `file-request.files.update` events should be sent. If not specified, these events will be send to `https://sc-api.x-onweb.com/api/v2/patient-notifications` by default.
 
 ### Response Body
 
@@ -152,7 +153,8 @@ Parameter | Required | Type | Description
   "expiresAt": null,
   "shortLinkExpiresAt": null,
   "shortLinkId": "a49ekq3j",
-  "type": "photo"
+  "type": "photo",
+  "filesUpdateWebhookUrl": null
 }
 ```
 
@@ -223,7 +225,8 @@ The staff user is identified using their user ID in the patient database (if kno
   "expiresAt": null,
   "shortLinkExpiresAt": null,
   "shortLinkId": "a49ekq3j",
-  "type": "photo"
+  "type": "photo",
+  "filesUpdateWebhookUrl": null
 }
 ```
 
@@ -283,3 +286,4 @@ Field | Type | Description
 `shortLinkExpiresAt` | String | The timestamp when access to this file request via the short link URL will expire. After this time, the patient will be unable to respond to this file request using a web browser, though an authenticated patient app user might still be able to respond as long as `expiresAt` is `null` or in the future.
 `shortLinkId` | String | An ID that can be used to form a public URL to the file request. This allows an unauthenticated user to access a webpage through which they can view/respond to the file request.
 `type` | String | Determines what file type/size restrictions should be used when validating user-selected files.
+`filesUpdateWebhookUrl` | String | The URL of the webhook where `file-request.files.update` events will be sent. If null, these events will be send to `https://sc-api.x-onweb.com/api/v2/patient-notifications` by default.
