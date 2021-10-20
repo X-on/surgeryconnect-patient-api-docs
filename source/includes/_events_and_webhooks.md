@@ -79,7 +79,7 @@ This event is generated whenever the files associated with a particular file req
 The JSON includes the FileRequest whose files changed, and arrays of IDs for the files that were added and removed.
 
 <aside class="notice">
-If the field `filesUpdateWebhookUrl` was specified when creating the file request, that URL is used as the webhook URL for this event. Otherwise, events of this type are hardcoded to be sent to the following API webhook:<br>
+If the field <code>filesUpdateWebhookUrl</code> was specified when creating the file request, that URL is used as the webhook URL for this event. Otherwise, events of this type are hardcoded to be sent to the following API webhook:<br>
 <code>https://sc-api.x-onweb.com/api/v2/patient-notifications</code>
 </aside>
 
